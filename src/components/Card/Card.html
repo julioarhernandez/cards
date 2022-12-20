@@ -1,0 +1,7 @@
+<li class="card">
+    {{ card.name }} - xxxx-{{ card.number }}
+    {{ card.cutDate }} - {{ daysLeft }} - {{}}
+    <div v-if="available">available</div>
+    <div v-else>not available</div>
+    <span>{{minAmount}} - {{ maxAmount}}</span>
+</li>

@@ -1,0 +1,11 @@
+<ul>
+    <Card 
+        v-for="card in list" 
+        :card="card" 
+        :key="card.id" 
+        :daysLeft="dateDiff(card.cutDate)"
+        :available="isCardAvailable(card.cutDate)"
+        :minAmount="minIdealPercentage(card)"
+        :maxAmount="maxIdealPercentage(card)"
+    />
+</ul>
