@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { getDate } from 'date-fns'
+import { addMonths, differenceInDays, getDate, getMonth, getYear } from 'date-fns'
 
 import Card from "../Card/Card.vue";
 
@@ -9,13 +9,19 @@ export default defineComponent({
     props: [ 'list','maxPercentage', 'minPercentage' ],
     methods: {
         dateDiff(cd){
-            const todaysDay = getDate(new Date());
-            const difference = todaysDay - cd - 1 ;
-            let result = difference;
-            if (difference == -1) {
-                result = 30;
-            }
-            if (difference < -1) {
+            const todaysDate = new Date();
+            const todaysDay = getDate(todaysDate);
+            const todaysMonth = getMonth(todaysDate);
+            const todaysYear = getYear(todaysDate);
+            const difference = todaysDay - cd;
+            let result = 0;
+            if (difference >= 0) {
+                //substract future date from today
+                let cutDate = new Date(todaysYear, todaysMonth, cd);
+                let futureCutDate = addMonths( cutDate, 1);
+                let differenceAgainstFuture = differenceInDays(futureCutDate, todaysDate);
+                result = differenceAgainstFuture;
+            } else {
                 result = cd - todaysDay - 1;
             }
             return result;
