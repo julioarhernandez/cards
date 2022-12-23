@@ -6,7 +6,8 @@
     <div v-if="paid">Paid</div>
     <span>{{minAmount}} - {{ maxAmount}}</span>
     <div>
-        <input type="checkbox" v-model="card.cutPaid">
+        <input type="checkbox" v-model="card.cutPaid" :id="card.id" @change="$emit('cutPaidChanged', $event.target)">
         <label for="checkbox">Paid: {{ card.cutPaid }}</label>
     </div>
+    <div>{{ card.cutPaidDate }}</div>
 </li>

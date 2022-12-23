@@ -10,4 +10,5 @@ export default defineComponent({
         'maxAmount', 
         'paid'
     ],
+    emits: ['cutPaidChanged']
 });  

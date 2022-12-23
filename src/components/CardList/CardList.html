@@ -7,5 +7,6 @@
         :available="isCardAvailable(card.cutDate)"
         :minAmount="minIdealPercentage(card)"
         :maxAmount="maxIdealPercentage(card)"
+        @cutPaidChanged="cutPaidChanged"
     />
 </ul>

@@ -6,7 +6,7 @@ import Card from "../Card/Card.vue";
 export default defineComponent({
     name: 'CardList',
     components: { Card },
-    props: [ 'list','maxPercentage', 'minPercentage' ],
+    props: [ 'list','maxPercentage', 'minPercentage','cutPaidChanged' ],
     methods: {
         dateDiff(cd){
             const todaysDate = new Date();

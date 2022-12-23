@@ -1,4 +1,5 @@
-import { parseISO, getMonth, getYear, isAfter, isBefore } from 'date-fns'
+import { parseISO, getMonth, getYear, isAfter, isBefore, format } from 'date-fns'
+import { id } from 'date-fns/locale'
 import { defineComponent } from 'vue'
 import Card from '../Card/Card.vue'
 import CardList from '../CardList/CardList.vue'
@@ -74,8 +75,20 @@ export default defineComponent({
                 }
             }
         });
+    },
+    // If cut Paid state changes set/reset cutPaidDate accordingly
+    cutPaidChanged(e){
+        this.cards.map( el => {
+            if (el.id == e.id) {
+                if (e.checked){
+                    el.cutPaidDate = format(new Date(), 'yyyy-MM-dd');
+                } else {
+                    el.cutPaidDate = null;
+                }
+                
+            }
+        });
     }
-    
   },
   mounted(){
     this.checkPaid();
