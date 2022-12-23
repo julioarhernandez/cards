@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { formatDistanceToNowStrict, differenceInDays } from 'date-fns'
+import { getDate } from 'date-fns'
 
 import Card from "../Card/Card.vue";
 
@@ -9,16 +9,21 @@ export default defineComponent({
     props: [ 'list','maxPercentage', 'minPercentage' ],
     methods: {
         dateDiff(cd){
-            let cutDate = new Date(cd);
-            return formatDistanceToNowStrict(cutDate, { addSuffix: true });
+            const todaysDay = getDate(new Date());
+            const difference = todaysDay - cd - 1 ;
+            let result = difference;
+            if (difference == -1) {
+                result = 30;
+            }
+            if (difference < -1) {
+                result = cd - todaysDay - 1;
+            }
+            return result;
         },
         isCardAvailable(cd){
             // if cutDate - today <= 3 or >=0 
-            const today = new Date();
-            const cutDate = new Date(cd);
-            const diffInDays = differenceInDays(cutDate, today);
-            console.log(diffInDays);
-            return ((diffInDays < 0) || (diffInDays > 3));
+            let dateDifference = this.dateDiff(cd);
+            return ((dateDifference < 0) || (dateDifference > 3));
         },
         minIdealPercentage(card){
             return (card.credit * this.minPercentage/100);
