@@ -1,3 +1,4 @@
+import { parseISO, getMonth, getYear, isAfter, isBefore } from 'date-fns'
 import { defineComponent } from 'vue'
 import Card from '../Card/Card.vue'
 import CardList from '../CardList/CardList.vue'
@@ -14,9 +15,10 @@ export default defineComponent({
                 id: 1,
                 name: 'capital one',
                 number: '3456',
-                cutDate: '20',
+                cutDate: '24',
                 dueDate: '15',
-                cutPaid: false,
+                cutPaid: true,
+                cutPaidDate: '2022-12-20',
                 cutDateBefore: 3,
                 credit: 8000
             },
@@ -27,6 +29,7 @@ export default defineComponent({
                 cutDate: '21',
                 dueDate: '24',
                 cutPaid: false,
+                cutPaidDate: null,
                 cutDateBefore: 3,
                 credit: 10000
             },
@@ -36,7 +39,8 @@ export default defineComponent({
                 number: '1095',
                 cutDate: '22',
                 dueDate: '30',
-                cutPaid: false,
+                cutPaid: true,
+                cutPaidDate: '2022-12-20',
                 cutDateBefore: 3,
                 credit: 5000
             },
@@ -44,13 +48,37 @@ export default defineComponent({
                 id: 4,
                 name: 'Wells Fargo',
                 number: '5198',
-                cutDate: '26',
+                cutDate: '24',
                 dueDate: '25',
                 cutPaid: false,
+                cutPaidDate: null,
                 cutDateBefore: 3,
                 credit: 1000
             },
         ]
     }
+  },
+  methods: {
+    // Reset paid status: if today's date is after cut date and the cut date paid 
+    // date is before cut date then reset to false the cutPaid and cutPaidDate
+    checkPaid(){
+        const todaysDate = new Date();
+        const todaysMonth = getMonth(todaysDate);
+        const todaysYear = getYear(todaysDate);
+        this.cards.map( el => {
+            if (el.cutPaid){     
+                let cutDate = new Date(todaysYear, todaysMonth, el.cutDate);   
+                if (isAfter(todaysDate, cutDate) && isBefore(parseISO(el.cutPaidDate), cutDate)) {
+                    el.cutPaid = false;
+                    el.cutPaidDate = null;
+                }
+            }
+        });
+    }
+    
+  },
+  mounted(){
+    this.checkPaid();
   }
+
 })

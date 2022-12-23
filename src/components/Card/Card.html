@@ -1,7 +1,12 @@
 <li class="card">
     {{ card.name }} - xxxx-{{ card.number }}
-    {{ card.cutDate }} -> {{ daysLeft }}
+    {{ card.cutDate }} -> {{ daysLeft !== 0 ? daysLeft : 'Last Day to pay' }}
     <div v-if="available">available</div>
     <div v-else>not available</div>
+    <div v-if="paid">Paid</div>
     <span>{{minAmount}} - {{ maxAmount}}</span>
+    <div>
+        <input type="checkbox" v-model="card.cutPaid">
+        <label for="checkbox">Paid: {{ card.cutPaid }}</label>
+    </div>
 </li>

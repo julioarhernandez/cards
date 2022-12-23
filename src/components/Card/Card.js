@@ -8,5 +8,6 @@ export default defineComponent({
         'available', 
         'minAmount', 
         'maxAmount', 
+        'paid'
     ],
 });  
