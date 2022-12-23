@@ -1,3 +1,4 @@
+<div v-if="filterRewardCategory">{{filterRewardCategory}} - <a href="#" @click.prevent="$emit('resetFilterBy')">Clear</a></div>
 <ul>
     <Card 
         v-for="card in list" 
@@ -8,5 +9,6 @@
         :minAmount="minIdealPercentage(card)"
         :maxAmount="maxIdealPercentage(card)"
         @cutPaidChanged="cutPaidChanged"
-    />
+        @filterBy="filterBy"
+        />
 </ul>

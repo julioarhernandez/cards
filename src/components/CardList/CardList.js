@@ -6,7 +6,8 @@ import Card from "../Card/Card.vue";
 export default defineComponent({
     name: 'CardList',
     components: { Card },
-    props: [ 'list','maxPercentage', 'minPercentage','cutPaidChanged' ],
+    props: [ 'list','maxPercentage', 'minPercentage','cutPaidChanged', 'filterBy','filterRewardCategory' ],
+    emits: ['resetFilterBy'],
     methods: {
         dateDiff(cd){
             const todaysDate = new Date();

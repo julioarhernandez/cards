@@ -1,5 +1,4 @@
 import { parseISO, getMonth, getYear, isAfter, isBefore, format } from 'date-fns'
-import { id } from 'date-fns/locale'
 import { defineComponent } from 'vue'
 import Card from '../Card/Card.vue'
 import CardList from '../CardList/CardList.vue'
@@ -9,6 +8,8 @@ export default defineComponent({
   components: { Card, CardList },
   data(){
     return {
+        filteredRewards: false,
+        filterRewardCategory: '',
         maxPercentage: 5,
         minPercentage: 3,
         cards: [
@@ -21,7 +22,37 @@ export default defineComponent({
                 cutPaid: true,
                 cutPaidDate: '2022-12-20',
                 cutDateBefore: 3,
-                credit: 8000
+                credit: 8000,
+                rewards:[
+                    {
+                        "name":"groceries",
+                        "interest": 2,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"gas",
+                        "interest": 1.5,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"amazon.com",
+                        "interest": 5,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"other",
+                        "interest": 2,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    }
+                ]
             },
             {
                 id:2,
@@ -32,7 +63,37 @@ export default defineComponent({
                 cutPaid: false,
                 cutPaidDate: null,
                 cutDateBefore: 3,
-                credit: 10000
+                credit: 10000,
+                rewards:[
+                    {
+                        "name":"groceries",
+                        "interest": 1,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"gas",
+                        "interest": 1.5,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"amazon.com",
+                        "interest": 5,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"target",
+                        "interest": 2,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    }
+                ]
             },
             {
                 id: 3,
@@ -43,7 +104,37 @@ export default defineComponent({
                 cutPaid: true,
                 cutPaidDate: '2022-12-20',
                 cutDateBefore: 3,
-                credit: 5000
+                credit: 5000,
+                rewards:[
+                    {
+                        "name":"groceries",
+                        "interest": 1.5,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"gas",
+                        "interest": 1.5,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"amazon.com",
+                        "interest": 5,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"other",
+                        "interest": 2,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    }
+                ]
             },
             {
                 id: 4,
@@ -54,12 +145,66 @@ export default defineComponent({
                 cutPaid: false,
                 cutPaidDate: null,
                 cutDateBefore: 3,
-                credit: 1000
+                credit: 1000,
+                rewards:[
+                    {
+                        "name":"groceries",
+                        "interest": 3,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"walmart.com",
+                        "interest": 3,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"gas",
+                        "interest": 1.5,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"amazon.com",
+                        "interest": 5,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    },
+                    {
+                        "name":"other",
+                        "interest": 2,
+                        "startDate":"2022-01-01",
+                        "endDate":"2022-03-31",
+                        "details": ""
+                    }
+                ]
             },
         ]
     }
   },
+  computed: {
+    filterRewardsFunction(){
+        return this.filteredRewards 
+            ? this.cards.filter((card) => {
+                return (card.rewards.find(e => e.name == this.filterRewardCategory));
+            })
+            : this.cards;
+    }
+  },
   methods: {
+    filterBy(cat){
+        this.filterRewardCategory = cat;
+        this.filteredRewards = true;
+    },
+    resetFilterBy(){
+        this.filterRewardCategory = '';
+        this.filteredRewards = false;
+    },
     // Reset paid status: if today's date is after cut date and the cut date paid 
     // date is before cut date then reset to false the cutPaid and cutPaidDate
     checkPaid(){
@@ -94,4 +239,5 @@ export default defineComponent({
     this.checkPaid();
   }
 
-})
+});
+

@@ -1,8 +1,11 @@
 <div id="app">
     <CardList
-      :list="cards"
+      :list="filterRewardsFunction"
       :maxPercentage="maxPercentage"
       :minPercentage="minPercentage"
       :cutPaidChanged="cutPaidChanged"
+      :filterRewardCategory="filterRewardCategory"
+      :filterBy="filterBy"
+      @resetFilterBy="resetFilterBy"
     />
 </div>

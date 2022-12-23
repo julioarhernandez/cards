@@ -10,4 +10,13 @@
         <label for="checkbox">Paid: {{ card.cutPaid }}</label>
     </div>
     <div>{{ card.cutPaidDate }}</div>
+    <details>
+        <summary>Rewards</summary>
+        <ul>
+            <li v-for="reward in card.rewards">
+                <a href="#" @click.prevent="$emit('filterBy', reward.name)">{{ reward.name }} - {{ reward.interest}}</a> 
+                
+            </li>
+        </ul>
+      </details>
 </li>
