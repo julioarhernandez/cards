@@ -10,6 +10,7 @@ export default defineComponent({
     return {
         filteredRewards: false,
         filterRewardCategory: '',
+        sortedFilteredData: [],
         maxPercentage: 5,
         minPercentage: 3,
         cards: [
@@ -189,14 +190,25 @@ export default defineComponent({
   },
   computed: {
     filterRewardsFunction(){
+        this.sortFilterRewards();
         return this.filteredRewards 
-            ? this.cards.filter((card) => {
-                return (card.rewards.find(e => e.name == this.filterRewardCategory));
-            })
+            ? this.sortedFilteredData
             : this.cards;
     }
   },
   methods: {
+    sortFilterRewards(){
+        // Filter first
+        let tempSortedFilteredData = this.cards.filter((card) => {
+            return (card.rewards.find(e => e.name == this.filterRewardCategory));
+        });
+        // Sort array
+        this.sortedFilteredData = [...tempSortedFilteredData].sort((a, b) => {
+            let rew1 = a.rewards.find(e => e.name == this.filterRewardCategory);
+            let rew2 = b.rewards.find(e => e.name == this.filterRewardCategory);
+            return rew2.interest - rew1.interest;
+        });
+    },
     filterBy(cat){
         this.filterRewardCategory = cat;
         this.filteredRewards = true;
