@@ -1,5 +1,6 @@
 import { parseISO, getMonth, getYear, isAfter, isBefore, format } from 'date-fns'
 import { defineComponent } from 'vue'
+import { useLoadedCards } from '@/helpers/firebase'
 import Card from '../Card/Card.vue'
 import CardList from '../CardList/CardList.vue'
 
@@ -249,6 +250,7 @@ export default defineComponent({
   },
   mounted(){
     this.checkPaid();
+    this.cards = useLoadedCards();
   }
 
 });
