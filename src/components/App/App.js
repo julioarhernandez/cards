@@ -1,6 +1,6 @@
 import { parseISO, getMonth, getYear, isAfter, isBefore, format } from 'date-fns'
 import { defineComponent } from 'vue'
-import { useLoadedCards } from '@/helpers/firebase'
+import { useLoadedCards, createCard } from '@/helpers/firebase'
 import Card from '../Card/Card.vue'
 import CardList from '../CardList/CardList.vue'
 
@@ -246,6 +246,11 @@ export default defineComponent({
                 
             }
         });
+    },
+    //addNewCard
+    addNewCard(card){
+        // this.createCard(card);
+        console.log('add', card);
     }
   },
   mounted(){
