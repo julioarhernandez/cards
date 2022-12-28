@@ -201,7 +201,7 @@ export default defineComponent({
     sortFilterRewards(){
         // Filter first
         let tempSortedFilteredData = this.cards.filter((card) => {
-            return (card.rewards.find(e => e.name == this.filterRewardCategory));
+            return (card.rewards && card.rewards.find(e => e.name == this.filterRewardCategory));
         });
         // Sort array
         this.sortedFilteredData = [...tempSortedFilteredData].sort((a, b) => {
@@ -249,8 +249,8 @@ export default defineComponent({
     },
     //addNewCard
     addNewCard(card){
-        // this.createCard(card);
-        console.log('add', card);
+        createCard(card);
+        // console.log('add', card);
     }
   },
   mounted(){

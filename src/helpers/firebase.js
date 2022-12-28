@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app";
-import {getFirestore, onSnapshot, collection} from "firebase/firestore";
+import {getFirestore, onSnapshot, collection, addDoc} from "firebase/firestore";
 import {ref, onUnmounted} from 'vue';
 
 // Your web app's Firebase configuration
@@ -19,7 +19,7 @@ const db = getFirestore(firebaseApp);
 const cardsCollection = collection(db, 'cards');
 
 export const createCard = card => {
-    return cardsCollection.add(card);
+    return addDoc(cardsCollection, card);
 }
 
 export const getCard = async id => {
