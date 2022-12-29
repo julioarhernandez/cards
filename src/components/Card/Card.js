@@ -1,4 +1,5 @@
 import { defineComponent } from "vue";
+import { deleteCard } from "@/helpers/firebase";
 
 export default defineComponent({
     name: 'Card',
@@ -10,5 +11,11 @@ export default defineComponent({
         'maxAmount', 
         'paid'
     ],
-    emits: ['cutPaidChanged', 'filterBy']
+    emits: ['cutPaidChanged', 'filterBy'],
+    methods: {
+        delCard(id){
+            deleteCard(id);
+        }
+    }
+
 });  
