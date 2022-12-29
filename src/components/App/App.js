@@ -1,6 +1,6 @@
 import { parseISO, getMonth, getYear, isAfter, isBefore, format } from 'date-fns'
 import { defineComponent } from 'vue'
-import { useLoadedCards, createCard } from '@/helpers/firebase'
+import { useLoadedCards, createCard, updateCard } from '@/helpers/firebase'
 import Card from '../Card/Card.vue'
 import CardList from '../CardList/CardList.vue'
 
@@ -66,12 +66,12 @@ export default defineComponent({
     cutPaidChanged(e){
         this.cards.map( el => {
             if (el.id == e.id) {
-                if (e.checked){
-                    el.cutPaidDate = format(new Date(), 'yyyy-MM-dd');
-                } else {
-                    el.cutPaidDate = null;
-                }
-                
+                // Update card cutPaid
+                updateCard(e.id, {
+                    ...el, 
+                    cutPaidDate: e.checked ? format(new Date(), 'yyyy-MM-dd') : null,
+                    cutPaid: e.checked,
+                });
             }
         });
     },
