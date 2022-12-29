@@ -15,7 +15,9 @@ export default defineComponent({
     emits: ['cutPaidChanged', 'filterBy'],
     methods: {
         delCard(id){
-            deleteCard(id);
+            if (confirm("Sure?")){
+                deleteCard(id);
+            }
         },
         updCard(id){
             updateCard(id);

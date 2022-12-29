@@ -1,14 +1,15 @@
 <div id="app">
-  <router-view :addNewCard="addNewCard"></router-view>
   <router-link to="/">Home</router-link> | 
   <router-link to="/newcard">New Card</router-link>
-    <CardList
-      :list="filterRewardsFunction"
-      :maxPercentage="maxPercentage"
-      :minPercentage="minPercentage"
-      :cutPaidChanged="cutPaidChanged"
-      :filterRewardCategory="filterRewardCategory"
-      :filterBy="filterBy"
-      @resetFilterBy="resetFilterBy"
-      />
+  <router-view 
+    :addNewCard="addNewCard"
+    :filterRewardsFunction="filterRewardsFunction"
+    :maxPercentage="maxPercentage"
+    :minPercentage="minPercentage"
+    :cutPaidChanged="cutPaidChanged"
+    :filterRewardCategory="filterRewardCategory"
+    :filterBy="filterBy"
+    :resetFilterBy="resetFilterBy"
+  ></router-view>
+
 </div>
