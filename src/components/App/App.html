@@ -1,7 +1,6 @@
 <div id="app">
   <router-view :addNewCard="addNewCard"></router-view>
   <router-link to="/">Home</router-link> | 
-  <router-link to="/editcard/">Edit</router-link> | 
   <router-link to="/newcard">New Card</router-link>
     <CardList
       :list="filterRewardsFunction"

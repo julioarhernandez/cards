@@ -19,5 +19,6 @@
             </li>
         </ul>
       </details>
-      <a href="#" @click.prevent="delCard(card.id)">Delete</a>
+      <a href="#" @click.prevent="delCard(card.id)">Delete</a> | 
+      <router-link :to="`/editcard/${card.id}`">Edit</router-link> 
 </li>

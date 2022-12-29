@@ -1,0 +1,60 @@
+<div class="update">
+    <h1>Update Card {{ id }}</h1>
+    <form @submit.prevent="updCard">
+        <div class="form-group">
+            <label for="name">Card Name</label>
+            <input type="text" v-model="form.name" name="name"/>
+        </div>
+        <div class="form-group">
+            <label for="number">Card Number</label>
+            <input type="text" v-model="form.number" name="number"/>
+        </div>
+        <div class="form-group">
+            <label for="cutDate">Cut Date</label>
+            <input type="number" min="1" max="31" v-model="form.cutDate" name="cutDate"/>
+        </div>
+        <div class="form-group">
+            <label for="dueDate">due Date</label>
+            <input type="number" min="1" max="31" v-model="form.dueDate" name="dueDate"/>
+        </div>
+        <div class="form-group">
+            <label for="cutDateBefore">cut Date before</label>
+            <input type="number" min="1" max="7" v-model="form.cutDateBefore" name="cutDateBefore"/>
+        </div>
+        <div class="form-group">
+            <label for="credit">Credit</label>
+            <input type="text" v-model="form.credit" name="credit"/>
+        </div>
+    
+        <br>
+    
+      
+        <div  v-for="reward in form.rewards" class="rewards" :key="reward.name" >
+            <div style="padding: 5px; display: inline-block; border: 1px solid; margin: 5px; cursor: pointer;" @click="removeReward(reward.name)">X</div>
+            <div class="form-group">
+                <label for="reward-name">Name</label>
+                <input type="text" v-model="reward.name" name="reward-name"/>
+            </div>
+            <div class="form-group">
+                <label for="reward-interest">Interest</label>
+                <input type="number" v-model="reward.interest" name="reward-interest"/>
+            </div>
+            <div class="form-group">
+                <label for="reward-startdate">Start Date</label>
+                <input type="date" v-model="reward.startDate" name="reward-startdate"/>
+            </div>
+            <div class="form-group">
+                <label for="reward-enddate">End Date</label>
+                <input type="date" v-model="reward.endDate" name="reward-enddate"/>
+            </div>
+            <div class="form-group">
+                <label for="reward-details">Details</label>
+                <input type="text" v-model="reward.details" name="reward-details"/>
+            </div>
+            
+        </div>
+        <div class="form-group">
+            <button type="submit">Update Card</button>
+        </div>
+    </form>
+</div>

@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import { deleteCard } from "@/helpers/firebase";
+import { updateCard } from "@/helpers/firebase";
 
 export default defineComponent({
     name: 'Card',
@@ -15,6 +16,9 @@ export default defineComponent({
     methods: {
         delCard(id){
             deleteCard(id);
+        },
+        updCard(id){
+            updateCard(id);
         }
     }
 
