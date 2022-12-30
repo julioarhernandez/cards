@@ -1,14 +1,19 @@
-import { parseISO, getMonth, getYear, isAfter, isBefore, format } from 'date-fns'
-import { defineComponent } from 'vue'
-import { useLoadedCards, createCard, updateCard } from '@/helpers/firebase'
-import Card from '../Card/Card.vue'
-import CardList from '../CardList/CardList.vue'
+import { parseISO, getMonth, getYear, isAfter, isBefore, format } from 'date-fns';
+import { defineComponent } from 'vue';
+import { useLoadedCards, createCard, updateCard } from '@/helpers/firebase';
+import { getAuth, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import router from '@/router';
+import Card from '../Card/Card.vue';
+import CardList from '../CardList/CardList.vue';
+
+let auth;
 
 export default defineComponent({
   name: 'App',
   components: { Card, CardList },
   data(){
     return {
+        isLoggedIn: false,
         filteredRewards: false,
         filterRewardCategory: '',
         sortedFilteredData: [],
@@ -26,6 +31,21 @@ export default defineComponent({
     }
   },
   methods: {
+    signInWithGoogle(){
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(getAuth(), provider).then((result => {
+            console.log(result.user);
+            router.push("/");
+        })).catch((error => {
+            alert(error);
+        }))
+        
+    },
+    handleSignOut(){
+        signOut(auth).then(()=>{
+            router.push("/signin");
+        })
+    },
     sortFilterRewards(){
         // Filter first
         let tempSortedFilteredData = this.cards.filter((card) => {
@@ -84,6 +104,14 @@ export default defineComponent({
   mounted(){
     this.checkPaid();
     this.cards = useLoadedCards();
+    auth = getAuth();
+    onAuthStateChanged( auth, (user) => {
+        if (user){
+            this.isLoggedIn = true;
+        }else {
+            this.isLoggedIn = false;
+        }
+    });
   }
 
 });

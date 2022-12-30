@@ -1,4 +1,7 @@
 <div id="app">
+  Is Signed {{ isLoggedIn }}
+  <button v-if="!isLoggedIn" @click="signInWithGoogle">Google Sign in</button>
+  <button v-else @click="handleSignOut">Sign out</button>
   <router-link to="/">Home</router-link> | 
   <router-link to="/newcard">New Card</router-link>
   <router-view 
