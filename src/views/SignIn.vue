@@ -1,5 +1,9 @@
 <template>
-    <SignInCard />
+    <SignInCard 
+        @signInWithGoogle="signInWithGoogle" 
+        @handleSignOut="handleSignOut"
+        :isLoggedIn="isLoggedIn"
+    />
 </template>
 
 <script>
@@ -8,7 +12,7 @@
 
     export default defineComponent({
         name: 'SignIn',
-        props:['addNewCard'],
+        props:['signInWithGoogle','handleSignOut','isLoggedIn'],
         components: {
             SignInCard
         }
