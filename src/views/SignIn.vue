@@ -3,6 +3,7 @@
         @signInWithGoogle="signInWithGoogle" 
         @handleSignOut="handleSignOut"
         :isLoggedIn="isLoggedIn"
+        :userEmail="userEmail"
     />
 </template>
 
@@ -12,7 +13,7 @@
 
     export default defineComponent({
         name: 'SignIn',
-        props:['signInWithGoogle','handleSignOut','isLoggedIn'],
+        props:['signInWithGoogle','handleSignOut','isLoggedIn', 'userEmail'],
         components: {
             SignInCard
         }

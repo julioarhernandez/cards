@@ -1,5 +1,5 @@
 <div id="app">
- <router-link to="/">Home</router-link> | 
+  <router-link to="/">Home</router-link> | 
   <router-link to="/newcard">New Card</router-link>
   <router-view 
     :addNewCard="addNewCard"
@@ -13,6 +13,7 @@
     :signInWithGoogle="signInWithGoogle"
     :handleSignOut="handleSignOut"
     :isLoggedIn="isLoggedIn"
+    :userEmail="userEmail"
   ></router-view>
 
 </div>

@@ -14,6 +14,7 @@ export default defineComponent({
   data(){
     return {
         isLoggedIn: false,
+        userEmail: null,
         filteredRewards: false,
         filterRewardCategory: '',
         sortedFilteredData: [],
@@ -43,6 +44,7 @@ export default defineComponent({
     },
     handleSignOut(){
         signOut(auth).then(()=>{
+            this.userEmail = null;
             router.push("/signin");
         })
     },
@@ -103,11 +105,13 @@ export default defineComponent({
   },
   mounted(){
     this.checkPaid();
-    this.cards = useLoadedCards();
     auth = getAuth();
     onAuthStateChanged( auth, (user) => {
         if (user){
             this.isLoggedIn = true;
+            this.userEmail = user.email;
+            this.cards = useLoadedCards(this.userEmail);
+            console.log(user);
         }else {
             this.isLoggedIn = false;
         }

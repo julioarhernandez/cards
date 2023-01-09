@@ -1,5 +1,5 @@
 <template>
-    <NewCard :addNewCard="addNewCard"/>
+    <NewCard :addNewCard="addNewCard" :userEmail="userEmail"/>
 </template>
 
 <script>
@@ -8,7 +8,7 @@
 
     export default defineComponent({
         name: 'NewCardView',
-        props:['addNewCard'],
+        props:['addNewCard','userEmail'],
         components: {
             NewCard
         }

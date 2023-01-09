@@ -2,7 +2,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
     name: 'NewCard',
-    props: ['addNewCard'],
+    props: ['addNewCard', 'userEmail'],
     emits: [],
     data(){
         return {
@@ -16,7 +16,8 @@ export default defineComponent({
         async addCard(){
             // add rewards object to form
             this.form.rewards = this.rewards;
-            await this.addNewCard(this.form);
+            const formVal = {...this.form, "user": this.userEmail}
+            await this.addNewCard(formVal);
             this.form = {};
             this.rewards = [];
         },

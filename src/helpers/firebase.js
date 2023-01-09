@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app";
-import {getFirestore, onSnapshot, collection, addDoc, getDoc, deleteDoc, updateDoc, doc} from "firebase/firestore";
+import {query, where, getFirestore, onSnapshot, collection, addDoc, getDoc, deleteDoc, updateDoc, doc} from "firebase/firestore";
 import {ref, onUnmounted} from 'vue';
 
 // Your web app's Firebase configuration
@@ -35,9 +35,10 @@ export const deleteCard = async id => {
     return await deleteDoc(doc(cardsCollection, id));
 }
 
-export const useLoadedCards = () => {
+export const useLoadedCards = (userId) => {
     const cards = ref([]);
-    const close = onSnapshot(cardsCollection, querySnapshot => {
+    const cardsCollectionByUser = query(collection(db, 'cards'), where("user", "==", userId));
+    const close = onSnapshot(cardsCollectionByUser, querySnapshot => {
         cards.value = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data()}));
     });
     onUnmounted(close);
