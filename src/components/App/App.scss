@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+$Oswald: 'Oswald', sans-serif;
+$Quattrocentro: 'Quattrocento Sans', sans-serif;
+body {
+    font-family: $Quattrocentro;
+    $bodyPadding: 15px;
+    margin: 0;
+    padding: $bodyPadding;
+    &:before {
+        position: absolute;
+        left: -20%;
+        top: -$bodyPadding;
+        right: -20%;
+        content: "";
+        height: 40vh;
+        background-color: #48abe0;
+        border-radius: 0 0 50% 50%;
+        width: 140%;
+        margin: 0;
+        z-index: -1;
+    }
+}

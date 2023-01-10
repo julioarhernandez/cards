@@ -102,7 +102,6 @@ export default defineComponent({
     //addNewCard
     addNewCard(card){
         createCard(card);
-        // console.log('add', card);
     }
   },
   mounted(){
@@ -114,7 +113,6 @@ export default defineComponent({
             this.userEmail = user.email;
             this.userAvatar = user.photoURL;
             this.cards = useLoadedCards(this.userEmail);
-            console.log(user);
         }else {
             this.isLoggedIn = false;
         }

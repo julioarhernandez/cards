@@ -1,5 +1,5 @@
 <div v-if="filterRewardCategory">{{filterRewardCategory}} - <a href="#" @click.prevent="$emit('resetFilterBy')">Clear</a></div>
-<ul>
+<ul class="cardList">
     <Card 
         v-for="card in list" 
         :card="card" 
