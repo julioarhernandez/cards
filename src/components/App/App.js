@@ -4,17 +4,19 @@ import { useLoadedCards, createCard, updateCard } from '@/helpers/firebase';
 import { getAuth, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import router from '@/router';
 import Card from '../Card/Card.vue';
+import Nav from '../Nav/Nav.vue';
 import CardList from '../CardList/CardList.vue';
 
 let auth;
 
 export default defineComponent({
   name: 'App',
-  components: { Card, CardList },
+  components: { Card, CardList, Nav },
   data(){
     return {
         isLoggedIn: false,
         userEmail: null,
+        userAvatar: "",
         filteredRewards: false,
         filterRewardCategory: '',
         sortedFilteredData: [],
@@ -110,6 +112,7 @@ export default defineComponent({
         if (user){
             this.isLoggedIn = true;
             this.userEmail = user.email;
+            this.userAvatar = user.photoURL;
             this.cards = useLoadedCards(this.userEmail);
             console.log(user);
         }else {

@@ -1,6 +1,5 @@
 <div id="app">
-  <router-link to="/">Home</router-link> | 
-  <router-link to="/newcard">New Card</router-link>
+  <Nav :userAvatar="userAvatar"/>
   <router-view 
     :addNewCard="addNewCard"
     :filterRewardsFunction="filterRewardsFunction"

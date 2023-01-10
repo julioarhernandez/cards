@@ -1,0 +1,18 @@
+<nav>
+    <ul class="leftNav">
+        <li>
+            <router-link to="/">Home</router-link>
+        </li>
+        <li>
+            <router-link to="/newcard">New Card</router-link>
+        </li>
+    </ul>
+    <div class="rightNav">
+        <a class="rightNav__link" href="#" @click.prevent="showMenu = !showMenu">
+            <img class="rightNav__image" :src="userAvatar" referrerpolicy="no-referrer"/>
+        </a>
+        <div class="rightNav__menu" v-if="showMenu" >
+            <a href="#">Sign Out</a>
+        </div>
+    </div>
+</nav>
