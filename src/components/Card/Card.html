@@ -47,13 +47,11 @@
 
 
     <div style="">
-        <div v-if="paid">Paid</div>
         <span>{{minAmount}} - {{ maxAmount}}</span>
         <div>
             <input type="checkbox" v-model="card.cutPaid" :id="card.id" @change="$emit('cutPaidChanged', $event.target)">
             <label for="checkbox">Paid: {{ card.cutPaid }}</label>
         </div>
-        <div>{{ card.cutPaidDate }}</div>
 
         <a href="#" @click.prevent="delCard(card.id)">Delete</a> |
         <router-link :to="`/editcard/${card.id}`">Edit</router-link>

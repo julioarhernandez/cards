@@ -50,7 +50,7 @@ export default defineComponent({
     computed: {
         dynamicColor(){
             return {
-                '--mainColor': '#ccc'
+                '--mainColor': this.card.color
             }
         },
     }

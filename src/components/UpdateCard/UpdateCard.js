@@ -1,15 +1,17 @@
 import { defineComponent } from "vue";
 import { getCard, updateCard } from "@/helpers/firebase";
-
-
+import { VSwatches } from 'vue3-swatches'
+import 'vue3-swatches/dist/style.css'
 
 export default defineComponent({
     name: 'UpdateCard',
     props:['id'],
+    components: { VSwatches },
     data(){
         return {
             form: {},
-            updated: false
+            updated: false,
+            color: '#ccc'
         }
     },
     methods: {
