@@ -10,6 +10,22 @@
             <input type="text" v-model="form.number" name="number"/>
         </div>
         <div class="form-group">
+            <label for="type">Card Type</label>
+            <select v-model="form.type" name="type">
+                <option disabled value="">Please Select</option>
+                <option>Visa</option>
+                <option>Mastercard</option>
+                <option>Amex</option>
+                <option>Discover</option>
+                <option>Capital One</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="color">Card Color</label>
+            <v-swatches v-model="color"></v-swatches>
+        </div>
+
+        <div class="form-group">
             <label for="cutDate">Cut Date</label>
             <input type="number" min="1" max="31" v-model="form.cutDate" name="cutDate"/>
         </div>

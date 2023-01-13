@@ -1,6 +1,7 @@
 import { defineComponent } from "vue";
 import { deleteCard, updateCard } from "@/helpers/firebase";
-import { format, getDate, addMonths } from "date-fns";
+import { format, getDate, addMonths, parse } from "date-fns";
+import ship from "@/assets/ship.png";
 
 export default defineComponent({
     name: 'Card',
@@ -12,6 +13,11 @@ export default defineComponent({
         'maxAmount', 
         'paid'
     ],
+    data(){
+        return {
+            ship
+        }
+    },
     emits: ['cutPaidChanged', 'filterBy'],
     methods: {
         delCard(id){
@@ -26,13 +32,27 @@ export default defineComponent({
             // if cutDay is lower than today's day cutMonth is month+1 else same month
             const today = new Date();
             const todaysDay = getDate(today);
-            let month = format(today,'LLL');
+            let month = format(today,'MM');
             // console.log('date',today,'-todaysDay',todaysDay,'-month',  month);
             if (cutDay <= todaysDay){
-                month = format(addMonths(today, 1), 'LLL');
+                month = format(addMonths(today, 1), 'MM');
             }
-            return `${month}/${cutDay}`;
+            return `${month}/${cutDay.toString().padStart(2, '0')}`;
+        },
+        paidDate(paidDay){
+            return format(parse(paidDay, 'yyyy-MM-dd', new Date()),'MM/dd');
+        },
+        getCardLogo(type){
+            const typeFileName = type.toLowerCase().replaceAll(' ', '-');
+            return new URL(`/src/assets/card-logos/${typeFileName}.svg`, import.meta.url).href;
         }
+    },
+    computed: {
+        dynamicColor(){
+            return {
+                '--mainColor': '#ccc'
+            }
+        },
     }
 
 });  

@@ -1,22 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,700&family=Share+Tech+Mono&display=swap');
 $Oswald: 'Oswald', sans-serif;
+$ShareTec: 'Share Tech Mono', monospace;
 $Quattrocentro: 'Quattrocento Sans', sans-serif;
 body {
     font-family: $Quattrocentro;
+    font-size: 20px;
     $bodyPadding: 15px;
     margin: 0;
     padding: $bodyPadding;
-    &:before {
-        position: absolute;
-        left: -20%;
-        top: -$bodyPadding;
-        right: -20%;
-        content: "";
-        height: 40vh;
-        background-color: #48abe0;
-        border-radius: 0 0 50% 50%;
-        width: 140%;
-        margin: 0;
-        z-index: -1;
-    }
+    width: 100%;
+    background-color: #0093E9;
+    background-image: linear-gradient(180deg, #00a1ff 0%, #ffffff 50vh);
+    min-height: 100vh;
+}
+h1 {
+    @extend %head1;
+}
+h2 {
+    @extend %head2;
+}
+.techNumber {
+    font-family: $ShareTec;
+    font-size: 22px;
+    text-shadow: -2px -2px 2px rgb(255 255 255), 1px 0 1px rgb(0 0 0 / 90%), 2px -2px 4px rgb(255 255 255), -2px -2px 2px rgb(0 0 0 / 90%), -2px 1px 1px rgb(0 0 0 / 90%);
+    -webkit-text-stroke: 2px rgba(0,0,0,0.4);
+}
+%head1 {
+    @extend %commonHead;
+    font-size: 24px;
+}
+%head2 {
+    @extend %commonHead;
+    font-size: 20px;
+}
+%commonHead {
+    font-family: $Oswald;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
 }

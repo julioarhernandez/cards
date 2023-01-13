@@ -1,6 +1,123 @@
 .card {
-    border: 1px solid blue;
-    border-radius: 5px;
-    padding: 15px;
-    min-height: 130px;
+    position: relative;
+    border: 1px solid #969699;
+    border-radius: 10px;
+    padding: 25px;
+    min-height: 160px;
+    background-color: var(--mainColor);
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        border-radius: 10px;
+        background-image: linear-gradient(147deg, rgb(255 255 255 / 0%) 0%, rgb(27 27 27 / 58%));
+        pointer-events: none;
+    }
+    &.unavailable {
+        border: none;
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: rgba(#fff, 0.7);
+            pointer-events: none;
+        }
+    }
+    &__container {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+            "card__brand card__time"
+            "card__reward card__type";
+        gap: 20px;
+    }
+    
+    .card__reward {
+        grid-area: card__reward;
+        &-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        &-cut,
+        &-paid {
+            display: flex;
+            gap: 5px;
+            &-label{
+                font-size: 12px;
+                padding-right: 2px;
+                color: #5f5f5f;
+                word-break: break-word;
+                width: 36px;
+                text-align: right;
+                text-transform: uppercase;
+                font-weight: 600;
+                line-height: 1;
+            }
+            &-date{
+                font-family: "Share Tech Mono", monospace;
+                font-size: 24px;
+                line-height: 1;
+            }
+        }
+    }
+    .card__type {
+        grid-area: card__type;
+        justify-self: flex-end;
+        &-image {
+            width: 50px;
+        }
+    }
+    .card__time {
+        font-family: 'Oswald', sans-serif;
+        grid-area: card__time;
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+        &-number {
+            font-size: 50px;
+            margin-bottom: 5px;
+        }
+        &-label {
+            font-size: 14px;
+            padding-right: 2px;
+            color: #5f5f5f;
+            &:not(:last-child){
+                margin-bottom: 5px;
+            }
+        }
+        &-paid {
+            font-size: 20px;
+            color: white;
+            background: green;
+            padding: 4px 4px;
+            border-radius: 4px;
+        }
+    }
+    .card__brand {
+        grid-area: card__brand;
+        align-self: flex-end;
+    }
+
+    &__ship {
+        margin-bottom: 8px;
+    }
+    
+    &__name {
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+    }
+    
+    &__number {
+        text-transform: uppercase;
+        font-size: 24px;
+    }
 }
