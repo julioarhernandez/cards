@@ -2,6 +2,7 @@ import { defineComponent } from "vue";
 import { deleteCard, updateCard } from "@/helpers/firebase";
 import { format, getDate, addMonths, parse } from "date-fns";
 import ship from "@/assets/ship.png";
+import chevron from "@/assets/chevron-white.svg";
 import colorContrast from 'color-contrast';
 
 export default defineComponent({
@@ -12,11 +13,13 @@ export default defineComponent({
         'available', 
         'minAmount', 
         'maxAmount', 
-        'paid'
+        'paid',
     ],
     data(){
         return {
-            ship
+            ship,
+            chevron,
+            showOptions: false
         }
     },
     emits: ['cutPaidChanged', 'filterBy'],
