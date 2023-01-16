@@ -39,3 +39,72 @@ h2 {
     margin: 0;
     padding: 0;
 }
+.form-header,
+.form-subheader {
+    width: 100%;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    &.form-half {
+        flex: 1 1 50%;
+        max-width: calc(50% - 48px);
+    }
+    &.form-button {
+        background: none;
+    }
+    label {
+        margin-bottom: 10px;
+        color: #979797;
+        font-size: 16px;
+    }
+    input[type=text],
+    input[type=number],
+    input[type=date],
+    select {
+        border: none;
+        background: none;
+        height: 30px;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    button {
+        padding: 20px;
+        border: none;
+        border-radius: 30px;
+        width: 70%;
+        margin: 0 auto;
+        font-size: inherit;
+        text-transform: uppercase;
+        font-weight: 700;
+        background: #00a1ff;
+        color: white;
+    }
+}
+.form-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.form-fieldset {
+    padding: 15px;
+    background: rgb(0, 161, 255, 0.1);
+    border-radius: 10px;
+}
+.page {
+    padding: 25px 15px;
+    background: white;
+    border-radius: 10px;
+    &-header,
+    &-subheader{
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+    }
+}

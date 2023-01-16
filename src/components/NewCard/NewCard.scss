@@ -1,0 +1,25 @@
+.reward-card{
+    padding: 10px 10px;
+    border: 1px solid rgba(191, 190, 190, 0.41);
+    display: inline-block;
+    border-radius: 30px;
+    background-color: #f0f0f0;
+    display: inline-flex;
+    gap: 15px;
+    &-wrapper {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    &-close {
+        color: white;
+        width: 22px;
+        height: 22px;
+        background: #00a1ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

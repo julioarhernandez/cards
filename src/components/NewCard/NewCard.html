@@ -1,79 +1,121 @@
-<div class="new">
-    <h1>New Card</h1>
-    <form @submit.prevent="addCard">
-        <div class="form-group">
-            <label for="name">Card Name</label>
-            <input type="text" v-model="form.name" name="name"/>
-        </div>
-        <div class="form-group">
-            <label for="number">Card Number</label>
-            <input type="text" v-model="form.number" name="number"/>
-        </div>
-        <div class="form-group">
-            <label for="type">Card Type</label>
-            <select v-model="form.type" name="type">
-                <option disabled value="">Please Select</option>
-                <option>Visa</option>
-                <option>Mastercard</option>
-                <option>Amex</option>
-                <option>Discover</option>
-                <option>Capital One</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="color">Card Color</label>
-            <v-swatches v-model="color"></v-swatches>
-        </div>
+<div class="page new">
+    <div class="page-header">
+        <h1>New Card</h1>
+    </div>
+    <div class="page-body">
+        <form @submit.prevent="addCard">
+            <div class="form-wrapper">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" v-model="form.name" name="name"/>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select v-model="form.type" name="type">
+                        <option disabled value="">Please Select</option>
+                        <option>Visa</option>
+                        <option>Mastercard</option>
+                        <option>Amex</option>
+                        <option>Discover</option>
+                        <option>Capital One</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="number">Number</label>
+                    <input type="text" v-model="form.number" name="number"/>
+                </div>
+                <div class="form-group">
+                    <label for="color">Color</label>
+                    <v-swatches v-model="color"></v-swatches>
+                </div>
+                <div class="form-group form-half">
+                    <label for="cutDate">Cut Day</label>
+                    <input type="number" min="1" max="31" v-model="form.cutDate" name="cutDate"/>
+                </div>
+                <div class="form-group form-half">
+                    <label for="dueDate">Due Day</label>
+                    <input type="number" min="1" max="31" v-model="form.dueDate" name="dueDate"/>
+                </div>
+                <div class="form-group form-half">
+                    <label for="cutDateBefore">Cut Day before</label>
+                    <input type="number" min="1" max="7" v-model="form.cutDateBefore" name="cutDateBefore"/>
+                </div>
+                <div class="form-group form-half">
+                    <label for="credit">Credit Limit</label>
+                    <input type="text" v-model="form.credit" name="credit"/>
+                </div>
+            </div>
+            <div class="form-wrapper form-fieldset">
+                <div class="form-header">
+                    <h2>Add Rewards</h2>
+                </div>
+                <div class="form-group form-half">
+                    <label for="reward-name">Name</label>
+                    <input type="text" v-model="rewardForm.name" name="reward-name"/>
+                </div>
+                <div class="form-group form-half">
+                    <label for="reward-interest">Interest</label>
+                    <input type="number" v-model="rewardForm.interest" name="reward-interest" step="0.5"/>
+                </div>
+                <div class="form-group form-half">
+                    <label for="reward-startdate">Start Date</label>
+                    <input type="date" v-model="rewardForm.startDate" name="reward-startdate"/>
+                </div>
+                <div class="form-group form-half">
+                    <label for="reward-enddate">End Date</label>
+                    <input type="date" v-model="rewardForm.endDate" name="reward-enddate"/>
+                </div>
+                <div class="form-group">
+                    <label for="reward-details">Details</label>
+                    <input type="text" v-model="rewardForm.details" name="reward-details"/>
+                </div>
+                <div class="form-subheader">
+                    <h2>Rewards added</h2>
+                </div>
+                <div class="reward-card-wrapper">
+                    <div class="reward-card" v-for="reward in rewards" :key="reward.name" @click="removeReward(reward.name)">
+                       <div class="reward-card-close">x</div>
+                        <div class="reward-card-label">{{reward.name}}</div>
+                    </div>
+                </div>
+                <div class="form-group form-button">
+                    <button @click.prevent="addReward">Add Reward</button>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label for="cutDate">Cut Date</label>
-            <input type="number" min="1" max="31" v-model="form.cutDate" name="cutDate"/>
-        </div>
-        <div class="form-group">
-            <label for="dueDate">due Date</label>
-            <input type="number" min="1" max="31" v-model="form.dueDate" name="dueDate"/>
-        </div>
-        <div class="form-group">
-            <label for="cutDateBefore">cut Date before</label>
-            <input type="number" min="1" max="7" v-model="form.cutDateBefore" name="cutDateBefore"/>
-        </div>
-        <div class="form-group">
-            <label for="credit">Credit</label>
-            <input type="text" v-model="form.credit" name="credit"/>
-        </div>
-        <div class="form-group">
-            <button type="submit">Add New Card</button>
-        </div>
-        <br>
-        <button @click.prevent="showReward = !showReward">{{ showReward ? 'Hide' : 'Show' }} Rewards</button>
-        <div v-for="reward in rewards" :key="reward.name" @click="removeReward(reward.name)" style="padding: 5px; border: 1px solid black; display: inline; margin-inline-start: 2px;">
-            {{reward.name}}
-        </div>
-        <div class="rewards" v-if="showReward">
-            <h2> Rewards </h2>
-            <div class="form-group">
-                <label for="reward-name">Name</label>
-                <input type="text" v-model="rewardForm.name" name="reward-name"/>
+            <div class="form-group form-button">
+                <button type="submit">Add New Card</button>
             </div>
-            <div class="form-group">
-                <label for="reward-interest">Interest</label>
-                <input type="number" v-model="rewardForm.interest" name="reward-interest" step="0.5"/>
+
+            <br>
+            <button @click.prevent="showReward = !showReward">{{ showReward ? 'Hide' : 'Show' }} Rewards</button>
+
+            <div class="rewards" v-if="showReward">
+                <h2> Rewards </h2>
+                <div class="form-group">
+                    <label for="reward-name">Name</label>
+                    <input type="text" v-model="rewardForm.name" name="reward-name"/>
+                </div>
+                <div class="form-group">
+                    <label for="reward-interest">Interest</label>
+                    <input type="number" v-model="rewardForm.interest" name="reward-interest" step="0.5"/>
+                </div>
+                <div class="form-group">
+                    <label for="reward-startdate">Start Date</label>
+                    <input type="date" v-model="rewardForm.startDate" name="reward-startdate"/>
+                </div>
+                <div class="form-group">
+                    <label for="reward-enddate">End Date</label>
+                    <input type="date" v-model="rewardForm.endDate" name="reward-enddate"/>
+                </div>
+                <div class="form-group">
+                    <label for="reward-details">Details</label>
+                    <input type="text" v-model="rewardForm.details" name="reward-details"/>
+                </div>
+                <div class="form-group">
+                    <button @click.prevent="addReward">Add Reward to Card</button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="reward-startdate">Start Date</label>
-                <input type="date" v-model="rewardForm.startDate" name="reward-startdate"/>
-            </div>
-            <div class="form-group">
-                <label for="reward-enddate">End Date</label>
-                <input type="date" v-model="rewardForm.endDate" name="reward-enddate"/>
-            </div>
-            <div class="form-group">
-                <label for="reward-details">Details</label>
-                <input type="text" v-model="rewardForm.details" name="reward-details"/>
-            </div>
-            <div class="form-group">
-                <button @click.prevent="addReward">Add Reward to Card</button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
