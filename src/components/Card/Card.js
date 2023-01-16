@@ -49,17 +49,14 @@ export default defineComponent({
         getCardLogo(type){
             const typeFileName = type.toLowerCase().replaceAll(' ', '-');
             return new URL(`/src/assets/card-logos/${typeFileName}.svg`, import.meta.url).href;
+        },
+        getColorContrast(){
+            return colorContrast('#000', this.card.color) <= 4.5
         }
     },
     computed: {
         dynamicColor(){
-            let dynamicStyle = {
-                '--mainColor': this.card.color,
-            }
-            if (colorContrast('#000', this.card.color) <= 4.5) {
-                dynamicStyle.color = 'white';
-            };
-            return dynamicStyle;
+            return {'--mainColor': this.card.color};
         },
     }
 

@@ -140,12 +140,15 @@
             border-bottom: 1px solid white;
             padding-bottom: 20px;
             ul {
+                list-style-type: disc;
                 margin: 0;
                 padding: 0;
-                list-style: none;
                 display: flex;
                 flex-wrap: wrap;
                 gap: 10px;
+                li {
+                    margin-left: 15px;
+                }
             }
         }
     }
@@ -183,6 +186,12 @@
         &-up{
             transform: rotate(180deg);
             
+        }
+    }
+    &.card-dark{
+        color: white;
+        .techNumber{
+            -webkit-text-stroke: white;
         }
     }
     .slide-leave-to,

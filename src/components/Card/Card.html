@@ -1,4 +1,4 @@
-<li class="card" :style="dynamicColor" :class="{'available': available, 'unavailable': !available}">
+<li class="card" :style="dynamicColor" :class="{'available': available, 'unavailable': !available, 'card-dark': getColorContrast()}">
     <div class="card__wrapper">
         <div class="card__container">
             <div class="card__item card__brand" >
@@ -14,8 +14,8 @@
             </div>
             <div class="card__item card__time">
                 <span style="display: none">{{ cutDate(card.cutDate) }}</span>
-                <span class="card__time-number">{{ daysLeft !== 0 ? daysLeft : 'No' }}</span>
-                <span class="card__time-label">{{ daysLeft == 1 ? 'day' : 'days'}} left</span>
+                <span class="card__time-number">{{ daysLeft !== 0 ? daysLeft : 'Last' }}</span>
+                <span class="card__time-label">{{ daysLeft <= 1 ? 'day' : 'days'}} {{ daysLeft !== 0 ? 'left' : 'to pay' }}</span>
                 <div v-if="card.cutPaid" class="card__time-paid">PAID</div>
             </div>
             <div class="card__item card__reward">
@@ -29,16 +29,6 @@
                         <div class="card__reward-paid-date">{{ paidDate(card.cutPaidDate) }}</div>
                     </div>
                 </div>
-
-                <details>
-                    <summary>Rewards</summary>
-                    <ul>
-                        <li v-for="reward in card.rewards">
-                            <a href="#" @click.prevent="$emit('filterBy', reward.name)">{{ reward.name }} - {{ reward.interest}}</a>
-
-                        </li>
-                    </ul>
-                </details>
             </div>
             <div class="card__item card__type">
                 <img class="card__type-image" :src="getCardLogo(card.type)">
@@ -49,7 +39,7 @@
     <transition name="slide">
         <div class="card__edit" v-show="showOptions">
         <div class="card__edit-wrapper">
-            <div class="card__edit--reward">
+            <div class="card__edit--reward" v-if="card.rewards && card.rewards.length">
                 <ul>
                     <li v-for="reward in card.rewards">
                         <a href="#" @click.prevent="$emit('filterBy', reward.name)">{{ reward.interest}}% - {{ reward.name }}</a>
@@ -62,8 +52,8 @@
             </div>
             <div class="card__edit--menu">
                 <div>
-                    <input type="checkbox" v-model="card.cutPaid" :id="card.id" @change="$emit('cutPaidChanged', $event.target)">
-                    <label for="checkbox">Paid</label>
+                    <input type="checkbox" v-model="card.cutPaid" name="paidCheckbox" :id="card.id" @change="$emit('cutPaidChanged', $event.target)">
+                    <label :for="card.id">Paid</label>
                     <span style="display: none">{{minAmount}} - {{ maxAmount}}</span>
                 </div>
             </div>

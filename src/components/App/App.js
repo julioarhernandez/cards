@@ -1,4 +1,4 @@
-import { parseISO, getMonth, getYear, isAfter, isBefore, format } from 'date-fns';
+import { parseISO, getMonth, getYear, isAfter, isBefore, format, getDate } from 'date-fns';
 import { defineComponent } from 'vue';
 import { useLoadedCards, createCard, updateCard } from '@/helpers/firebase';
 import { getAuth, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -61,6 +61,19 @@ export default defineComponent({
             let rew2 = b.rewards.find(e => e.name == this.filterRewardCategory);
             return rew2.interest - rew1.interest;
         });
+    },
+    sortListByCutDate(cardList){
+        return [...cardList].sort((a,b) => {
+            const todayDay = getDate(new Date());
+            // if today's day is equals or less than cut date add
+            // 31 days for the comparison for a shifted sorting
+            const first = (todayDay >= a.cutDate ? a.cutDate + 31 : a.cutDate);
+            const second = (todayDay >= b.cutDate ? b.cutDate + 31 : b.cutDate);
+            console.log('a cut', a.cutDate,'b cut', b.cutDate, 'first', first, 'second', second, first-second);
+            return first-second;
+        }
+
+        );
     },
     filterBy(cat){
         this.filterRewardCategory = cat;

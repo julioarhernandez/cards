@@ -6,7 +6,7 @@ import Card from "../Card/Card.vue";
 export default defineComponent({
     name: 'CardList',
     components: { Card },
-    props: [ 'list','maxPercentage', 'minPercentage','cutPaidChanged', 'filterBy','filterRewardCategory' ],
+    props: [ 'list','maxPercentage', 'minPercentage','cutPaidChanged', 'filterBy', 'sortBy','filterRewardCategory' ],
     emits: ['resetFilterBy'],
     methods: {
         dateDiff(cd){

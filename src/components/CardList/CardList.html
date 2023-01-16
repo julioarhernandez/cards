@@ -1,7 +1,7 @@
 <div v-if="filterRewardCategory">{{filterRewardCategory}} - <a href="#" @click.prevent="$emit('resetFilterBy')">Clear</a></div>
 <ul class="cardList">
     <Card 
-        v-for="card in list" 
+        v-for="card in sortBy(list)"
         :card="card" 
         :key="card.id" 
         :daysLeft="dateDiff(card.cutDate)"

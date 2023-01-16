@@ -1,6 +1,5 @@
 <template>
     <div class="home">
-        <h1>home</h1>
         <CardList
             :list="filterRewardsFunction"
             :maxPercentage="maxPercentage"
@@ -8,6 +7,7 @@
             :cutPaidChanged="cutPaidChanged"
             :filterRewardCategory="filterRewardCategory"
             :filterBy="filterBy"
+            :sortBy="sortBy"
             @resetFilterBy="resetFilterBy"
         />
     </div>
@@ -19,7 +19,7 @@
 
     export default defineComponent({
         name: 'Home',
-        props:['filterRewardsFunction','maxPercentage', 'minPercentage','cutPaidChanged', 'filterBy','filterRewardCategory','resetFilterBy'],
+        props:['filterRewardsFunction','maxPercentage', 'minPercentage','cutPaidChanged', 'filterBy', 'sortBy','filterRewardCategory','resetFilterBy'],
         components: {
             CardList
         }
