@@ -1,0 +1,35 @@
+<div class="rewardCard">
+    <div class="rewardCard-header">
+        <div class="rewardCard-header-data">
+            <div class="rewardCard-name">{{ reward.name }}</div>
+            <div class="rewardCard-interest">{{ reward.interest }}%</div>
+            <div class="rewardCard-dates">{{ reward.startDate }} / {{ reward.endDate }}</div>
+        </div>
+        <div class="rewardCard-header-actions">
+            <button class="rewardCard-remove" @click.prevent="$emit('removeReward', index)">X</button>
+            <button @click.prevent="show = !show">V</button>
+        </div>
+    </div>
+    <div class="rewardCard-content" v-show="show">
+        <div class="form-group">
+            <label for="rewarded-name">Name</label>
+            <input type="text" v-model="reward.name" name="rewarded-name" id="rewarded-name"/>
+        </div>
+        <div class="form-group">
+            <label for="reward-interest">Interest</label>
+            <input type="number" v-model="reward.interest" name="reward-interest" step="0.5" id="reward-interest"/>
+        </div>
+        <div class="form-group form-half">
+            <label for="reward-startdate">Start Date</label>
+            <input type="date" v-model="reward.startDate" name="reward-startdate" id="reward-startdate"/>
+        </div>
+        <div class="form-group form-half">
+            <label for="reward-enddate">End Date</label>
+            <input type="date" v-model="reward.endDate" name="reward-enddate" id="reward-enddate"/>
+        </div>
+        <div class="form-group">
+            <label for="reward-details">Details</label>
+            <input type="text" v-model="reward.details" name="reward-details" id="reward-details"/>
+        </div>
+    </div>
+</div>

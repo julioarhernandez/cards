@@ -49,33 +49,43 @@
                 <div class="form-header">
                     <h2>Rewards</h2>
                 </div>
-                <div class="reward-card-wrapper">
-                    <div class="reward-card-form" v-for="(reward, index) in form.rewards" :key="index" >
-                        <div class="form-group">
-                            <label for="rewarded-name">Name</label>
-                            <input type="text" v-model="form.rewards[index].name" name="rewarded-name" id="rewarded-name"/>
-                        </div>
-                        <div class="form-group form-half">
-                            <label for="reward-interest">Interest</label>
-                            <input type="number" v-model="form.rewards[index].interest" name="reward-interest" step="0.5" id="reward-interest"/>
-                        </div>
-                        <div class="form-group form-half">
-                            <label for="reward-startdate">Start Date</label>
-                            <input type="date" v-model="form.rewards[index].startDate" name="reward-startdate" id="reward-startdate"/>
-                        </div>
-                        <div class="form-group form-half">
-                            <label for="reward-enddate">End Date</label>
-                            <input type="date" v-model="form.rewards[index].endDate" name="reward-enddate" id="reward-enddate"/>
+                <div class="rewardCard-wrapper">
+                    <RewardCard
+                        v-for="(reward, index) in form.rewards"
+                        @removeReward="removeReward"
+                        :key="index"
+                        :reward="reward"
+                        :index="index"
+                    />
+                    <div class="rewardCard-content">
+                        <div class="rewardCard-content-header">
+                            <h2>New Reward</h2>
                         </div>
                         <div class="form-group">
-                            <label for="reward-details">Details</label>
-                            <input type="text" v-model="form.rewards[index].details" name="reward-details" id="reward-details"/>
+                            <label for="new-rewarded-name">Name</label>
+                            <input type="text" v-model="newReward.name" name="new-rewarded-name" id="new-rewarded-name"/>
                         </div>
-                        <div class="form-group form-button">
-                            <button class="reward-card-remove" @click="removeReward(form.rewards[index].name)">Remove</button>
+                        <div class="form-group">
+                            <label for="new-reward-interest">Interest</label>
+                            <input type="number" v-model="newReward.interest" name="new-reward-interest" step="0.5" id="new-reward-interest"/>
+                        </div>
+                        <div class="form-group form-half">
+                            <label for="new-reward-startdate">Start Date</label>
+                            <input type="date" v-model="newReward.startDate" name="new-reward-startdate" id="new-reward-startdate"/>
+                        </div>
+                        <div class="form-group form-half">
+                            <label for="new-reward-enddate">End Date</label>
+                            <input type="date" v-model="newReward.endDate" name="new-reward-enddate" id="new-reward-enddate"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-reward-details">Details</label>
+                            <input type="text" v-model="newReward.details" name="new-reward-details" id="new-reward-details"/>
                         </div>
                     </div>
                 </div>
+                    <div class="form-group form-button">
+                        <button @click.prevent="addNewReward">Save rewards</button>
+                    </div>
 
             </div>
             <div class="form-group form-button">
