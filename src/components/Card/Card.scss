@@ -194,6 +194,10 @@
             -webkit-text-stroke: white;
         }
     }
+    .notAvailable {
+        opacity: .5;
+        text-decoration: none;
+    }
     .slide-leave-to,
     .slide-enter-from {
         max-height: 0;

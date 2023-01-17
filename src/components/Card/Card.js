@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
 import { deleteCard, updateCard } from "@/helpers/firebase";
-import { format, getDate, addMonths, parse } from "date-fns";
+import { format, getDate, addMonths, parse, isWithinInterval } from "date-fns";
 import ship from "@/assets/ship.png";
 import chevron from "@/assets/chevron-white.svg";
 import colorContrast from 'color-contrast';
@@ -52,12 +52,22 @@ export default defineComponent({
         },
         getColorContrast(){
             return colorContrast('#000', this.card.color) <= 4.5
+        },
+        checkRewardDate(startDate, endDate){
+            if (startDate && endDate) {
+                if (!isWithinInterval(new Date(), {
+                    start: new Date(startDate),
+                    end: new Date(endDate)})){
+                        return "notAvailable";
+                }
+            }
         }
     },
     computed: {
         dynamicColor(){
             return {'--mainColor': this.card.color};
-        },
+        }
+
     }
 
 });  
