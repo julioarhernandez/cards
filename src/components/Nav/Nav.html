@@ -1,18 +1,27 @@
 <nav>
-    <ul class="leftNav">
-        <li>
-            <router-link to="/">Cards</router-link>
-        </li>
-        <li>
-            <router-link to="/newcard">New Card</router-link>
-        </li>
-    </ul>
-    <div class="rightNav">
-        <a class="rightNav__link" href="#" @click.prevent="showMenu = !showMenu">
-            <img class="rightNav__image" :src="userAvatar" referrerpolicy="no-referrer"/>
-        </a>
-        <div class="rightNav__menu" v-if="showMenu" >
-            <a href="#" @click.prevent="signOut">Sign Out</a>
+    <div class="nav-links">
+        <ul class="leftNav">
+            <li>
+                <a href="#" class="nav-links-filter" @click.prevent="showFilter = !showFilter">
+                    <img class="nav-links-filter-icon" src="/src/assets/filter.svg"></a>
+            </li>
+            <li>
+                <router-link to="/">Cards</router-link>
+            </li>
+            <li>
+                <router-link to="/newcard">New Card</router-link>
+            </li>
+        </ul>
+        <div class="rightNav">
+            <a class="rightNav__link" href="#" @click.prevent="showMenu = !showMenu">
+                <img class="rightNav__image" :src="userAvatar" referrerpolicy="no-referrer"/>
+            </a>
+            <div class="rightNav__menu" v-if="showMenu" >
+                <a href="#" @click.prevent="signOut">Sign Out</a>
+            </div>
         </div>
+    </div>
+    <div class="nav-filters" v-show="showFilter">
+        filters
     </div>
 </nav>

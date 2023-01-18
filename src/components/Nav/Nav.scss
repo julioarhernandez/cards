@@ -1,11 +1,33 @@
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 10px 10px 20px;
-    margin-bottom: 20px;
-    background: white;
-    border-radius: 10px;
+    .nav-links{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 20px;
+        margin-bottom: 20px;
+        background: white;
+        border-radius: 10px;
+        height: 35px;
+        &-filter{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            &-icon{
+                height: 24px;
+            }
+        }
+    }
+    .nav-filters{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 20px;
+        margin-bottom: 20px;
+        background: white;
+        border-radius: 10px;
+        height: 35px;
+    }
+    
     a{
         font-family: "Oswald", sans-serif;
         text-transform: uppercase;
@@ -22,6 +44,10 @@ nav {
     }
     .rightNav{
         position: relative;
+        &__link {
+            line-height: 1;
+            vertical-align: middle;
+        }
         &__image {
             height: 30px;
             border-radius: 50%;
