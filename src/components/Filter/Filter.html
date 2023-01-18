@@ -1,5 +1,20 @@
 <div class="filter">
     <div class="filter-container">
-        filters here
+        <ul>
+            <li v-for="filter in filters">
+                {{ filter.name }}
+            </li>
+        </ul>
+    </div>
+    <div class="filter-search">
+        <div class="filter-search-form" v-show="showSearch">
+            <input class="filter-search-input" type="text" v-model="searchContent" />
+        </div>
+        <div class="filter-search-link">
+            <a href="#" @click.prevent="showSearch = !showSearch">
+                <img class="filter-search-link-icon" src="/src/assets/search.svg" />
+            </a>
+        </div>
+
     </div>
 </div>

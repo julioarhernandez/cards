@@ -1,7 +1,32 @@
 .filter{
-    background: white;
-    border-radius: 15px;
+    display: flex;
+    width: 100%;
+    gap: 10px;
     &-container{
-        padding: 10px;
+        flex: 1 1 100%;
+        overflow-x: scroll;
+        /* hide overflow scrollbars */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    &-search{
+        flex-shrink: 0;
+        display: flex;
+        gap: 5px;
+        &-link {
+            &-icon{
+                height: 20px;
+            }
+        }
+        &-input{
+            width: 80px;
+        }
+    }
+    ul{
+        display: inline-flex;
+        gap: 10px;
     }
 }

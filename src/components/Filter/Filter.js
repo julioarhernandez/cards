@@ -1,4 +1,5 @@
 import { defineComponent } from "vue";
+import filters from "@/helpers/filters.js";
 
 export default defineComponent({
     name: 'Filter',
@@ -6,6 +7,9 @@ export default defineComponent({
     data(){
         return {
             show: false,
+            showSearch: false,
+            searchContent: "",
+            filters,
         }
     },
     methods:{
