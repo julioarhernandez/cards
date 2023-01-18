@@ -44,7 +44,9 @@ export default defineComponent({
             return `${month}/${cutDay.toString().padStart(2, '0')}`;
         },
         paidDate(paidDay){
-            return format(parse(paidDay, 'yyyy-MM-dd', new Date()),'MM/dd');
+            if (paidDay){
+                return format(parse(paidDay, 'yyyy-MM-dd', new Date()),'MM/dd');
+            }
         },
         getCardLogo(type){
             const typeFileName = type.toLowerCase().replaceAll(' ', '-');
