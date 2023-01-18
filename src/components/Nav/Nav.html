@@ -1,7 +1,7 @@
 <nav>
     <ul class="leftNav">
         <li>
-            <router-link to="/">Home</router-link>
+            <router-link to="/">Cards</router-link>
         </li>
         <li>
             <router-link to="/newcard">New Card</router-link>
@@ -12,7 +12,7 @@
             <img class="rightNav__image" :src="userAvatar" referrerpolicy="no-referrer"/>
         </a>
         <div class="rightNav__menu" v-if="showMenu" >
-            <a href="#">Sign Out</a>
+            <a href="#" @click.prevent="signOut">Sign Out</a>
         </div>
     </div>
 </nav>

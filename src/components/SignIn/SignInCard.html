@@ -1,7 +1,13 @@
-<div class="new">
-    <h1>SignIn</h1>
-    <form @submit.prevent="signIn">
-        <button v-if="!isLoggedIn" @click="$emit('signInWithGoogle')">Sign in with Google</button>
-        <button v-else @click="$emit('handleSignOut')">Sign out</button>
-    </form>
+<div class="signIn">
+    <div class="signIn-header">
+        <h1>Please Sign In</h1>
+        <p class="signInDisclaimer">This is a protected application. If you really want to see your cards you'll need to login. So far we only have Google Authentication. Maybe in the future we could also include facebook... but now... this is what we have</p>
+    </div>
+    <div class="signIn-content">
+        <form @submit.prevent="signIn">
+            <button v-if="!isLoggedIn" @click="$emit('signInWithGoogle')">Sign in with Google</button>
+            <button v-else @click="$emit('handleSignOut')">Sign out</button>
+        </form>
+    </div>
+
 </div>

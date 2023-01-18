@@ -69,7 +69,6 @@ export default defineComponent({
             // 31 days for the comparison for a shifted sorting
             const first = (todayDay >= a.cutDate ? a.cutDate + 31 : a.cutDate);
             const second = (todayDay >= b.cutDate ? b.cutDate + 31 : b.cutDate);
-            console.log('a cut', a.cutDate,'b cut', b.cutDate, 'first', first, 'second', second, first-second);
             return first-second;
         }
 
