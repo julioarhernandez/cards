@@ -18,10 +18,12 @@ export default defineComponent({
     },
     methods: {
         addNewReward(){
-            this.form.rewards.push(this.newReward);
+            // clean all empty rewards
+            if (this.newReward.length){
+                this.form.rewards.push(this.newReward);
+            }
             this.updCard().then(()=>{
                 this.newReward = {};
-                console.log('updated');
             });
 
         },
