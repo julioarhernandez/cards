@@ -1,5 +1,6 @@
 nav {
     .nav-links{
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -8,6 +9,7 @@ nav {
         background: white;
         border-radius: 10px;
         height: 35px;
+        z-index: 2;
         &-filter{
             display: flex;
             align-items: center;
@@ -27,6 +29,7 @@ nav {
         }
     }
     .nav-filters{
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -35,6 +38,7 @@ nav {
         background: white;
         border-radius: 10px;
         height: 35px;
+        z-index: 1;
     }
     
     a{
@@ -67,5 +71,17 @@ nav {
             right: 35px;
             top: 0px;
         }
+    }
+    .slideDown-leave-to,
+    .slideDown-enter-from {
+        margin-top: -75px;
+    }
+    .slideDown-leave-from,
+    .slideDown-enter-to {
+        margin-top: 0;
+    }
+    .slideDown-leave-active,
+    .slideDown-enter-active {
+        transition: margin-top 0.5s ease;
     }
 }

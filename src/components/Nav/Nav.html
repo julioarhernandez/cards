@@ -22,7 +22,9 @@
             </div>
         </div>
     </div>
-    <div class="nav-filters" v-show="showFilter">
-        <Filter @filterBy="filterBy" :filterRewardCategory="filterRewardCategory" :showFilter="showFilter"/>
-    </div>
+    <transition name="slideDown">
+        <div class="nav-filters" v-show="showFilter">
+            <Filter @filterBy="filterBy" :filterRewardCategory="filterRewardCategory" :showFilter="showFilter"/>
+        </div>
+    </transition>
 </nav>
