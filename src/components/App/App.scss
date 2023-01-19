@@ -114,3 +114,17 @@ h2 {
         }
     }
 }
+::-webkit-input-placeholder { /* Edge */
+    color: rgb(0, 0, 0, 0.2);
+    font-weight: normal;
+}
+
+:-ms-input-placeholder { /* Internet Explorer */
+    color: rgb(0, 0, 0, 0.2);
+    font-weight: normal;
+}
+
+::placeholder {
+    color: rgb(0, 0, 0, 0.2);
+    font-weight: normal;
+}

@@ -7,12 +7,12 @@
             <div class="form-wrapper">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" v-model="form.name" name="name" id="name"/>
+                    <input type="text" v-model="form.name" name="name" id="name" required="required" placeholder="Credit card name"/>
                 </div>
                 <div class="form-group">
                     <label for="type">Type</label>
-                    <select v-model="form.type" name="type" id="type">
-                        <option disabled value="">Please Select</option>
+                    <select v-model="form.type" name="type" id="type" required>
+                        <option disabled value="" selected="selected">Please Select</option>
                         <option>Visa</option>
                         <option>Mastercard</option>
                         <option>Amex</option>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="number">Number</label>
-                    <input type="text" v-model="form.number" name="number" id="number"/>
+                    <input type="number" v-model="form.number" name="number" id="number" required max="9999" pattern="[0-9]{4}" placeholder="last 4 digits"/>
                 </div>
                 <div class="form-group form-half">
                     <label for="color">Card Color</label>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group form-half">
                     <label for="cutDate">Cut Day</label>
-                    <input type="number" min="1" max="31" v-model="form.cutDate" name="cutDate" id="cutDate"/>
+                    <input type="number" min="1" max="31" v-model="form.cutDate" name="cutDate" id="cutDate" required placeholder="Day only (1-31)"/>
                 </div>
                 <div class="form-group form-half">
                     <label for="dueDate">Due Day</label>

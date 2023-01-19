@@ -38,27 +38,27 @@
     </div>
     <transition name="slide">
         <div class="card__edit" v-show="showOptions">
-        <div class="card__edit-wrapper">
-            <div class="card__edit--reward" v-if="card.rewards && card.rewards.length">
-                <ul>
-                    <li v-for="reward in card.rewards">
-                        <a href="#" :class="checkRewardDate(reward.startDate, reward.endDate)" @click.prevent="$emit('filterBy', reward.name)">{{ reward.interest}}% - {{ reward.name }}</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="card__edit--main">
-                <a href="#" @click.prevent="delCard(card.id)">Delete</a> |
-                <router-link :to="`/editcard/${card.id}`">Edit</router-link>
-            </div>
-            <div class="card__edit--menu">
-                <div>
-                    <input type="checkbox" v-model="card.cutPaid" name="paidCheckbox" :id="card.id" @change="$emit('cutPaidChanged', $event.target)">
-                    <label :for="card.id">Paid</label>
-                    <span style="display: none">{{minAmount}} - {{ maxAmount}}</span>
+            <div class="card__edit-wrapper">
+                <div class="card__edit--reward" v-if="card.rewards && card.rewards.length">
+                    <ul>
+                        <li v-for="reward in card.rewards">
+                            <a href="#" :class="checkRewardDate(reward.startDate, reward.endDate)" @click.prevent="$emit('filterBy', reward.name)">{{ reward.interest}}% - {{ reward.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card__edit--main">
+                    <a href="#" @click.prevent="delCard(card.id)">Delete</a> |
+                    <router-link :to="`/editcard/${card.id}`">Edit</router-link>
+                </div>
+                <div class="card__edit--menu">
+                    <div>
+                        <input type="checkbox" v-model="card.cutPaid" name="paidCheckbox" :id="card.id" @change="$emit('cutPaidChanged', $event.target)">
+                        <label :for="card.id">Paid</label>
+                        <span style="display: none">{{minAmount}} - {{ maxAmount}}</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </transition>
     <div class="card__button">
         <button @click.prevent="showOptions = !showOptions">
