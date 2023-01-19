@@ -42,7 +42,7 @@
                 <div class="card__edit--reward" v-if="card.rewards && card.rewards.length">
                     <ul>
                         <li v-for="reward in card.rewards">
-                            <a href="#" :class="checkRewardDate(reward.startDate, reward.endDate)" @click.prevent="$emit('filterBy', reward.name)">{{ reward.interest}}% - {{ reward.name }}</a>
+                            <span :class="checkRewardDate(reward.startDate, reward.endDate)" v-tippy="reward.details">{{ reward.interest}}% - {{ reward.name }}</span>
                         </li>
                     </ul>
                 </div>
