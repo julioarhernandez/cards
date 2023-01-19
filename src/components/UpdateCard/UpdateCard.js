@@ -1,8 +1,10 @@
 import { defineComponent } from "vue";
 import { getCard, updateCard } from "@/helpers/firebase";
 import { VSwatches } from 'vue3-swatches';
-// import RewardCard from "@/components/RewardCard/RewardCard.vue";
+import { useToast } from "vue-toastification";
 import 'vue3-swatches/dist/style.css';
+
+const toast = useToast();
 
 export default defineComponent({
     name: 'UpdateCard',
@@ -34,8 +36,35 @@ export default defineComponent({
                 this.form.rewards = this.rewards;
                 await updateCard(this.id, this.form);
                 this.updated = true;
+                toast.success("Card Updated", {
+                    position: "top-center",
+                    timeout: 5000,
+                    closeOnClick: true,
+                    pauseOnFocusLoss: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    draggablePercent: 0.6,
+                    showCloseButtonOnHover: false,
+                    hideProgressBar: false,
+                    closeButton: "button",
+                    icon: true,
+                    rtl: false
+                });
             }catch (error) {
-                alert(error)
+                toast.success(error, {
+                    position: "top-center",
+                    timeout: 5000,
+                    closeOnClick: true,
+                    pauseOnFocusLoss: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    draggablePercent: 0.6,
+                    showCloseButtonOnHover: false,
+                    hideProgressBar: false,
+                    closeButton: "button",
+                    icon: true,
+                    rtl: false
+                });
             }
         },
         addReward() {
@@ -48,7 +77,20 @@ export default defineComponent({
                     this.rewards.push(this.rewardForm);
                 }
                 this.updCard().then(()=>{
-                    console.log('card updated');
+                    toast.success("Reward Updated", {
+                        position: "top-center",
+                        timeout: 5000,
+                        closeOnClick: true,
+                        pauseOnFocusLoss: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        draggablePercent: 0.6,
+                        showCloseButtonOnHover: false,
+                        hideProgressBar: false,
+                        closeButton: "button",
+                        icon: true,
+                        rtl: false
+                    });
                 });
                 this.rewardForm = {};
             }

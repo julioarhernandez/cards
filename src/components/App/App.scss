@@ -132,3 +132,11 @@ h2 {
     color: rgb(0, 0, 0, 0.2);
     font-weight: normal;
 }
+
+.Vue-Toastification__container .Vue-Toastification__toast {
+    width: 68% !important;
+    border-radius: 40px;
+    margin: 0.5rem auto;
+    top: 3vh;
+    min-width: 250px;
+}

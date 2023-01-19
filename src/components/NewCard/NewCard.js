@@ -1,6 +1,9 @@
 import { defineComponent } from "vue";
 import { VSwatches } from 'vue3-swatches'
 import 'vue3-swatches/dist/style.css'
+import {useToast} from "vue-toastification";
+
+const toast = useToast();
 
 export default defineComponent({
     name: 'NewCard',
@@ -18,12 +21,43 @@ export default defineComponent({
     },
     methods: {
         async addCard(){
-            // add rewards object to form
-            this.form.rewards = this.rewards;
-            const formVal = {...this.form, "user": this.userEmail, "color": this.color}
-            await this.addNewCard(formVal);
-            this.form = {};
-            this.rewards = [];
+            try {
+                // add rewards object to form
+                this.form.rewards = this.rewards;
+                const formVal = {...this.form, "user": this.userEmail, "color": this.color}
+                await this.addNewCard(formVal);
+                this.form = {};
+                this.rewards = [];
+                toast.success("Card Added", {
+                    position: "top-center",
+                    timeout: 5000,
+                    closeOnClick: true,
+                    pauseOnFocusLoss: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    draggablePercent: 0.6,
+                    showCloseButtonOnHover: false,
+                    hideProgressBar: false,
+                    closeButton: "button",
+                    icon: true,
+                    rtl: false
+                });
+            }catch (error) {
+                toast.success(error, {
+                    position: "top-center",
+                    timeout: 5000,
+                    closeOnClick: true,
+                    pauseOnFocusLoss: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    draggablePercent: 0.6,
+                    showCloseButtonOnHover: false,
+                    hideProgressBar: false,
+                    closeButton: "button",
+                    icon: true,
+                    rtl: false
+                });
+            }
         },
         updateReward(index) {
             this.rewardForm = this.rewards[index];
