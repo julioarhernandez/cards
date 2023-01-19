@@ -40,9 +40,10 @@
         <div class="card__edit" v-show="showOptions">
             <div class="card__edit-wrapper">
                 <div class="card__edit--reward" v-if="card.rewards && card.rewards.length">
+
                     <ul>
                         <li v-for="reward in card.rewards">
-                            <span :class="checkRewardDate(reward.startDate, reward.endDate)" v-tippy="reward.details">{{ reward.interest}}% - {{ reward.name }}</span>
+                            <Tooltip :className="checkRewardDate(reward.startDate, reward.endDate)" :content="reward.details" :interest="reward.interest" :text="reward.name"></Tooltip>
                         </li>
                     </ul>
                 </div>

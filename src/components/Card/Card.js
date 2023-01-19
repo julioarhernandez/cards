@@ -1,9 +1,11 @@
 import { defineComponent } from "vue";
 import { deleteCard, updateCard } from "@/helpers/firebase";
 import { format, getDate, addMonths, parse, isWithinInterval } from "date-fns";
+import Tooltip from "@/components/Tooltip/Tooltip.vue";
 import ship from "@/assets/ship.png";
 import chevron from "@/assets/chevron-white.svg";
 import colorContrast from 'color-contrast';
+
 
 export default defineComponent({
     name: 'Card',
@@ -15,6 +17,7 @@ export default defineComponent({
         'maxAmount', 
         'paid',
     ],
+    components: { Tooltip },
     data(){
         return {
             ship,
@@ -60,7 +63,7 @@ export default defineComponent({
                 if (!isWithinInterval(new Date(), {
                     start: new Date(startDate),
                     end: new Date(endDate)})){
-                        return "notAvailable";
+                        return "Tooltip-faded";
                 }
             }
         }

@@ -1,0 +1,30 @@
+.Tooltip{
+    $a:&;
+    position: relative;
+    &-available {
+        margin-right: 30px;
+        &:after{
+            content: "i";
+            display: flex;
+            position: absolute;
+            right: -18px;
+            bottom: 4px;
+            border-radius: 50%;
+            background-color: #00a1ff;
+            color: white;
+            width: 13px;
+            height: 13px;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+        }
+    }
+    &-faded {
+        opacity: 0.5;
+    }
+    &-interest{
+        font-size: 15px;
+        margin-right: 5px;
+    }
+}

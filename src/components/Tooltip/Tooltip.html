@@ -1,0 +1,4 @@
+<div class="Tooltip" :class="[{'Tooltip-available': content} , className]" v-tippy="content">
+    <span v-if="interest" class="Tooltip-interest">{{interest}}%</span>
+    <span>{{text}}</span>
+</div>

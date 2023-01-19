@@ -140,15 +140,15 @@
             border-bottom: 1px solid white;
             padding-bottom: 20px;
             ul {
-                list-style-type: disc;
+                list-style-type: none;
                 margin: 0;
                 padding: 0;
                 display: flex;
                 flex-wrap: wrap;
                 gap: 10px;
-                li {
-                    margin-left: 15px;
-                }
+                //li {
+                //    margin-left: 15px;
+                //}
             }
         }
     }
