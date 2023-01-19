@@ -25,9 +25,21 @@ export default defineComponent({
             this.form = {};
             this.rewards = [];
         },
+        updateReward(index) {
+            this.rewardForm = this.rewards[index];
+            this.rewardForm.id = index;
+        },
         addReward() {
-            this.rewards.push(this.rewardForm);
-            this.rewardForm = {};
+            if ('name' in this.rewardForm && 'interest' in this.rewardForm ){
+                // If there is an index hidden field it means we
+                // are updating a reward not adding a new one
+                if ('id' in this.rewardForm){
+                    this.rewards[this.rewardForm.id] = this.rewardForm;
+                } else {
+                    this.rewards.push(this.rewardForm);
+                }
+                this.rewardForm = {};
+            }
         },
         removeReward(rewName) {
             this.rewards = this.rewards.filter( obj => obj.name !== rewName);

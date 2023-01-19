@@ -39,7 +39,7 @@ export default defineComponent({
             }
         },
         addReward() {
-            if ('name' in this.rewardForm){
+            if ('name' in this.rewardForm && 'interest' in this.rewardForm ){
                 // If there is an index hidden field it means we
                 // are updating a reward not adding a new one
                 if ('id' in this.rewardForm){

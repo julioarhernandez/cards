@@ -76,9 +76,9 @@
                     <h2>Rewards added</h2>
                 </div>
                 <div class="reward-card-wrapper">
-                    <div class="reward-card" v-for="reward in rewards" :key="reward.name">
+                    <div class="reward-card" v-for="(reward, index) in rewards" :key="index">
                        <div class="reward-card-close" @click="removeReward(reward.name)">x</div>
-                        <div class="reward-card-label">{{reward.name}}</div>
+                        <div class="reward-card-label" @click="updateReward(index)">{{ reward.name }}</div>
                     </div>
                 </div>
             </div>
