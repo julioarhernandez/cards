@@ -28,7 +28,6 @@ export default defineComponent({
   computed: {
     filterRewardsFunction(){
         this.sortFilterRewards();
-        console.log('rewards filtered?', this.filteredRewards, this.sortedFilteredData);
         return this.filteredRewards
             ? this.sortedFilteredData
             : this.cards;
@@ -54,14 +53,26 @@ export default defineComponent({
     sortFilterRewards(){
         // Filter first
         let tempSortedFilteredData = this.cards.filter((card) => {
-            return (card.rewards && card.rewards.find(e => e.name.toLowerCase() == this.filterRewardCategory.toLowerCase()));
+            return (card.rewards && card.rewards.find(e => {
+                const nameFound = e.name.toLowerCase() == this.filterRewardCategory.toLowerCase();
+                const detailsFound = e.details
+                    ? e.details.toLowerCase().includes(this.filterRewardCategory.toLowerCase())
+                    : false;
+                return (nameFound || detailsFound);
+            }));
         });
         // Sort array
-        this.sortedFilteredData = [...tempSortedFilteredData].sort((a, b) => {
-            let rew1 = a.rewards.find(e => e.name.toLowerCase() == this.filterRewardCategory.toLowerCase());
-            let rew2 = b.rewards.find(e => e.name.toLowerCase() == this.filterRewardCategory.toLowerCase());
-            return rew2.interest - rew1.interest;
-        });
+        if (tempSortedFilteredData.length){
+            this.sortedFilteredData = [...tempSortedFilteredData].sort((a, b) => {
+                let rew1 = a.rewards.find(e => e.name.toLowerCase() == this.filterRewardCategory.toLowerCase());
+                let rew2 = b.rewards.find(e => e.name.toLowerCase() == this.filterRewardCategory.toLowerCase());
+                if (rew1 && rew2){
+                    return rew2.interest - rew1.interest;
+                }
+
+            });
+        }
+
     },
     sortListByCutDate(cardList){
         if (this.filteredRewards) {
