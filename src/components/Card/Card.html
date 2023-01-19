@@ -6,10 +6,10 @@
                     <h1>{{ card.name }}</h1>
                 </div>
                 <div class="card__ship">
-                    <img :src="ship">
+                    <img :src="ship" alt="">
                 </div>
                 <div class="card__number">
-                    <span class="techNumber">xxxx-xxxx-xxxx-{{ card.number }}</span>
+                    <span class="techNumber">xxxx-xxxx-{{ card.number }}</span>
                 </div>
             </div>
             <div class="card__item card__time">
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="card__item card__type">
-                <img class="card__type-image" :src="getCardLogo(card.type)">
+                <img class="card__type-image" :src="getCardLogo(card.type)" :alt="card.type">
             </div>
 
         </div>
@@ -62,9 +62,9 @@
     </transition>
     <div class="card__button">
         <button @click.prevent="showOptions = !showOptions">
-            <div :class="showOptions ? 'card__button-up' : 'card__button-down'">
-                <img :src="chevron">
-            </div>
+            <span :class="showOptions ? 'card__button-up' : 'card__button-down'">
+                <img :src="chevron" alt="show/hide card options">
+            </span>
         </button>
     </div>
 </li>
