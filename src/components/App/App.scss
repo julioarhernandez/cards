@@ -58,6 +58,12 @@ h2 {
     &.form-button {
         background: none;
     }
+    &.form-button-left {
+        padding-left: 0;
+        button{
+            margin: 0;
+        }
+    }
     label {
         margin-bottom: 10px;
         color: #979797;
@@ -93,7 +99,7 @@ h2 {
     gap: 15px;
 }
 .form-fieldset {
-    padding: 15px;
+    padding: 25px 15px 35px;
     background: rgb(0, 0, 0, 0.12);
     border-radius: 10px;
 }

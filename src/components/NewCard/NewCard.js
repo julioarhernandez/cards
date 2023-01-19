@@ -9,11 +9,11 @@ export default defineComponent({
     emits: [],
     data(){
         return {
-            showReward: false,
             form: {},
             rewardForm: {},
             rewards: [],
             color: '#ccc',
+            showReward: false,
         }
     },
     methods: {
