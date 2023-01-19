@@ -4,7 +4,7 @@ import Filter from "@/components/Filter/Filter.vue";
 
 export default defineComponent({
     name: 'Nav',
-    props: ['userAvatar', 'handleSignOut', 'filterBy','filterRewardCategory','resetFilterBy'],
+    props: ['userAvatar', 'handleSignOut', 'filterBy','filterRewardCategory','resetFilterBy','isLoggedIn'],
     components: { Filter },
     data(){
         return {

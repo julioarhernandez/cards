@@ -15,9 +15,9 @@
         </ul>
         <div class="rightNav">
             <a class="rightNav__link" href="#" @click.prevent="showMenu = !showMenu">
-                <img class="rightNav__image" :src="userAvatar" referrerpolicy="no-referrer" alt="User Avatar"/>
+                <img class="rightNav__image" :src="isLoggedIn ? userAvatar : '/src/assets/user.png'" referrerpolicy="no-referrer" alt="User Avatar"/>
             </a>
-            <div class="rightNav__menu" v-if="showMenu" >
+            <div class="rightNav__menu" v-if="showMenu && isLoggedIn" >
                 <a href="#" @click.prevent="signOut">Sign Out</a>
             </div>
         </div>
