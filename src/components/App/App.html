@@ -1,5 +1,11 @@
 <div id="app">
-  <Nav :userAvatar="userAvatar" :handleSignOut="handleSignOut"/>
+  <Nav
+      :userAvatar="userAvatar"
+      :handleSignOut="handleSignOut"
+      :filterBy="filterBy"
+      :filterRewardCategory="filterRewardCategory"
+      :resetFilterBy="resetFilterBy"
+  />
   <router-view 
     :addNewCard="addNewCard"
     :filterRewardsFunction="filterRewardsFunction"

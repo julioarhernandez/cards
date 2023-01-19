@@ -2,8 +2,9 @@
     <div class="nav-links">
         <ul class="leftNav">
             <li>
-                <a href="#" class="nav-links-filter" @click.prevent="showFilter = !showFilter">
-                    <img class="nav-links-filter-icon" src="/src/assets/filter.svg"></a>
+                <a href="#" class="nav-links-filter" :class="{'active': showFilter}" @click.prevent="toggleFilterIcon">
+                    <img class="nav-links-filter-icon" src="/src/assets/filter.svg">
+                </a>
             </li>
             <li>
                 <router-link to="/">Cards</router-link>
@@ -22,6 +23,6 @@
         </div>
     </div>
     <div class="nav-filters" v-show="showFilter">
-        <Filter />
+        <Filter @filterBy="filterBy" :filterRewardCategory="filterRewardCategory"/>
     </div>
 </nav>

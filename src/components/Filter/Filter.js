@@ -3,7 +3,8 @@ import filters from "@/helpers/filters.js";
 
 export default defineComponent({
     name: 'Filter',
-    props: [],
+    props: ['filterRewardCategory'],
+    emits: [ 'filterBy'],
     data(){
         return {
             show: false,

@@ -14,6 +14,15 @@ nav {
             height: 100%;
             &-icon{
                 height: 24px;
+                filter: opacity(0.3);
+            }
+            &.active .nav-links-filter-icon{
+                filter: none;
+            }
+            &-icon{
+                height: 24px;
+                filter: opacity(0.3);
+                
             }
         }
     }

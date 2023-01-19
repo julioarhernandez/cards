@@ -1,8 +1,9 @@
 <div class="filter">
     <div class="filter-container">
+
         <ul>
             <li v-for="filter in filters">
-                {{ filter.name }}
+                <a href="#" @click.prevent="$emit('filterBy', filter.name)" :class="{'active': filter.name.toLowerCase() == filterRewardCategory.toLowerCase()}">{{ filter.name }}</a>
             </li>
         </ul>
     </div>

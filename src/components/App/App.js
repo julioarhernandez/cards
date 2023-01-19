@@ -28,7 +28,8 @@ export default defineComponent({
   computed: {
     filterRewardsFunction(){
         this.sortFilterRewards();
-        return this.filteredRewards 
+        console.log('rewards filtered?', this.filteredRewards, this.sortedFilteredData);
+        return this.filteredRewards
             ? this.sortedFilteredData
             : this.cards;
     }
@@ -53,26 +54,28 @@ export default defineComponent({
     sortFilterRewards(){
         // Filter first
         let tempSortedFilteredData = this.cards.filter((card) => {
-            return (card.rewards && card.rewards.find(e => e.name == this.filterRewardCategory));
+            return (card.rewards && card.rewards.find(e => e.name.toLowerCase() == this.filterRewardCategory.toLowerCase()));
         });
         // Sort array
         this.sortedFilteredData = [...tempSortedFilteredData].sort((a, b) => {
-            let rew1 = a.rewards.find(e => e.name == this.filterRewardCategory);
-            let rew2 = b.rewards.find(e => e.name == this.filterRewardCategory);
+            let rew1 = a.rewards.find(e => e.name.toLowerCase() == this.filterRewardCategory.toLowerCase());
+            let rew2 = b.rewards.find(e => e.name.toLowerCase() == this.filterRewardCategory.toLowerCase());
             return rew2.interest - rew1.interest;
         });
     },
     sortListByCutDate(cardList){
-        return [...cardList].sort((a,b) => {
-            const todayDay = getDate(new Date());
-            // if today's day is equals or less than cut date add
-            // 31 days for the comparison for a shifted sorting
-            const first = (todayDay >= a.cutDate ? a.cutDate + 31 : a.cutDate);
-            const second = (todayDay >= b.cutDate ? b.cutDate + 31 : b.cutDate);
-            return first-second;
+        if (this.filteredRewards) {
+            return cardList;
+        } else {
+            return [...cardList].sort((a,b) => {
+                const todayDay = getDate(new Date());
+                // if today's day is equals or less than cut date add
+                // 31 days for the comparison for a shifted sorting
+                const first = (todayDay >= a.cutDate ? a.cutDate + 31 : a.cutDate);
+                const second = (todayDay >= b.cutDate ? b.cutDate + 31 : b.cutDate);
+                return first-second;
+            });
         }
-
-        );
     },
     filterBy(cat){
         this.filterRewardCategory = cat;
