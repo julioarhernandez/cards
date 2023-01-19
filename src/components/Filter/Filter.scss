@@ -1,13 +1,21 @@
 .filter{
+    $inputWidth: 60px;
+    $inputBorderWidth: 1px;
+    $inputPaddingSides: 10px;
+    $inputPaddingTopDown: 3px;
     display: flex;
     width: 100%;
     gap: 10px;
     &-container{
         flex: 1 1 100%;
         overflow-x: scroll;
+        align-self: center;
         /* hide overflow scrollbars */
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
+        /* border-right linear gradient mask*/
+        mask-image: linear-gradient(90deg, rgb(0, 0, 0) 80%, transparent);
+        -webkit-mask-image: linear-gradient(90deg, rgb(0, 0, 0) 80%, transparent);
         &::-webkit-scrollbar {
             display: none;
         }
@@ -22,18 +30,41 @@
     &-search{
         flex-shrink: 0;
         display: flex;
-        gap: 5px;
+        gap: 10px;
+        overflow: hidden;
         &-link {
             &-icon{
                 height: 20px;
             }
         }
+        &-form{
+            overflow: hidden;
+        }
         &-input{
-            width: 80px;
+            width: $inputWidth;
+            border: $inputBorderWidth solid #a8a8a8;
+            text-align: right;
+            font-family: "Oswald", sans-serif;
+            text-transform: uppercase;
+            color: #a8a8a8;
+            border-radius: 7px;
+            padding: $inputPaddingTopDown $inputPaddingSides;
         }
     }
     ul{
         display: inline-flex;
         gap: 10px;
+    }
+    .slideLeft-leave-to,
+    .slideLeft-enter-from {
+        width: 0;
+    }
+    .slideLeft-leave-from,
+    .slideLeft-enter-to {
+        width: $inputPaddingSides * 2 + $inputWidth + 2 * $inputBorderWidth;
+    }
+    .slideLeft-leave-active,
+    .slideLeft-enter-active {
+        transition: width 0.5s cubic-bezier(0.22, 0.61, 0.19, 0.98);
     }
 }

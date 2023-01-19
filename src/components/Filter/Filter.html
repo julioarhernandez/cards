@@ -1,6 +1,5 @@
 <div class="filter">
     <div class="filter-container">
-
         <ul>
             <li v-for="filter in filters">
                 <a href="#" @click.prevent="$emit('filterBy', filter.name)" :class="{'active': filter.name.toLowerCase() == filterRewardCategory.toLowerCase()}">{{ filter.name }}</a>
@@ -8,14 +7,15 @@
         </ul>
     </div>
     <div class="filter-search">
-        <div class="filter-search-form" v-show="showSearch">
-            <input class="filter-search-input" type="text" v-model="searchContent" />
-        </div>
+        <transition name="slideLeft">
+            <div class="filter-search-form" v-show="showSearch">
+                <input class="filter-search-input" type="text" v-model="searchContent" @keyup.enter="handleFilterInput"/>
+            </div>
+        </transition>
         <div class="filter-search-link">
             <a href="#" @click.prevent="showSearch = !showSearch">
-                <img class="filter-search-link-icon" src="/src/assets/search.svg" />
+                <img class="filter-search-link-icon" src="/src/assets/search.svg" alt="Custom filter"/>
             </a>
         </div>
-
     </div>
 </div>

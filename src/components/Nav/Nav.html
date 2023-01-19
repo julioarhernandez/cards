@@ -3,7 +3,7 @@
         <ul class="leftNav">
             <li>
                 <a href="#" class="nav-links-filter" :class="{'active': showFilter}" @click.prevent="toggleFilterIcon">
-                    <img class="nav-links-filter-icon" src="/src/assets/filter.svg">
+                    <img class="nav-links-filter-icon" src="/src/assets/filter.svg" alt="Filter">
                 </a>
             </li>
             <li>
@@ -15,7 +15,7 @@
         </ul>
         <div class="rightNav">
             <a class="rightNav__link" href="#" @click.prevent="showMenu = !showMenu">
-                <img class="rightNav__image" :src="userAvatar" referrerpolicy="no-referrer"/>
+                <img class="rightNav__image" :src="userAvatar" referrerpolicy="no-referrer" alt="User Avatar"/>
             </a>
             <div class="rightNav__menu" v-if="showMenu" >
                 <a href="#" @click.prevent="signOut">Sign Out</a>
@@ -23,6 +23,6 @@
         </div>
     </div>
     <div class="nav-filters" v-show="showFilter">
-        <Filter @filterBy="filterBy" :filterRewardCategory="filterRewardCategory"/>
+        <Filter @filterBy="filterBy" :filterRewardCategory="filterRewardCategory" :showFilter="showFilter"/>
     </div>
 </nav>

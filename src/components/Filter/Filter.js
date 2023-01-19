@@ -3,7 +3,7 @@ import filters from "@/helpers/filters.js";
 
 export default defineComponent({
     name: 'Filter',
-    props: ['filterRewardCategory'],
+    props: ['filterRewardCategory','showFilter'],
     emits: [ 'filterBy'],
     data(){
         return {
@@ -14,8 +14,18 @@ export default defineComponent({
         }
     },
     methods:{
-        hideMenu(){
-            this.show = false;
+        handleFilterInput(){
+            this.$emit('filterBy', this.searchContent);
         }
-    }
+    },
+    watch: {
+        // showFilter is being watched
+        // reset filter and hide search form
+        showFilter(newState, oldState) {
+            if (newState !== oldState && !newState) {
+                this.searchContent = "";
+                this.showSearch = false;
+            }
+        }
+    },
 });  
