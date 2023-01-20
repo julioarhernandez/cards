@@ -17,9 +17,11 @@
             <a class="rightNav__link" href="#" @click.prevent="showMenu = !showMenu">
                 <img class="rightNav__image" :src="isLoggedIn ? userAvatar : '/src/assets/user.png'" referrerpolicy="no-referrer" alt="User Avatar"/>
             </a>
-            <div class="rightNav__menu" v-if="showMenu && isLoggedIn" >
-                <a href="#" @click.prevent="signOut">Sign Out</a>
-            </div>
+            <transition name="zoomIn">
+                <div class="rightNav__menu" v-if="showMenu && isLoggedIn" >
+                    <a href="#" @click.prevent="signOut">Sign Out</a>
+                </div>
+            </transition>
         </div>
     </div>
     <transition name="slideDown">
