@@ -32,6 +32,7 @@
         display: flex;
         gap: 10px;
         overflow: hidden;
+        align-items: center;
         &-link {
             &-icon{
                 height: 20px;
@@ -51,9 +52,19 @@
             padding: $inputPaddingTopDown $inputPaddingSides;
         }
     }
+    &-icon {
+        height: 26px;
+        opacity: 0.3;
+        .active & {
+            opacity: 1;
+        }
+    }
     ul{
         display: inline-flex;
-        gap: 10px;
+        gap: 24px;
+        li {
+            padding: 5px;
+        }
     }
     .slideLeft-leave-to,
     .slideLeft-enter-from {

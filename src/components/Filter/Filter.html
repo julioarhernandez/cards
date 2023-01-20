@@ -2,7 +2,10 @@
     <div class="filter-container">
         <ul>
             <li v-for="filter in filters">
-                <a href="#" @click.prevent="$emit('filterBy', filter.name)" :class="{'active': filter.name.toLowerCase() == filterRewardCategory.toLowerCase()}">{{ filter.name }}</a>
+                <a href="#" @click.prevent="$emit('filterBy', filter.name)" :class="{'active': filter.name.toLowerCase() == filterRewardCategory.toLowerCase()}">
+                    <img class="filter-icon" :src="'/src/assets/categories/' + filter.slug + '.svg'" />
+<!--                    {{ filter.name }}-->
+                </a>
             </li>
         </ul>
     </div>
