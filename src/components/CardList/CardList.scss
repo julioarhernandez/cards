@@ -5,4 +5,16 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    &-not-found {
+        font-size: 16px;
+        width: 248px;
+        margin: 20px auto;
+        text-align: center;
+        color: rgb(0 0 0 / 60%);
+        &-image {
+            height: 60px;
+            margin-bottom: 9px;
+            opacity: 0.5;
+        }
+    }
 }

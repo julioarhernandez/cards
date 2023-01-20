@@ -9,5 +9,10 @@
         :maxAmount="maxIdealPercentage(card)"
         @cutPaidChanged="cutPaidChanged"
         @filterBy="filterBy"
-        />
+    />
+    <div class="cardList-not-found" v-if="!list.length">
+        <img class="cardList-not-found-image" src="/src/assets/broken.svg" alt="Empty list of cards" />
+        <h2>No cards to show</h2>
+        <p>If you are filtering rewards try with another keyword or category</p>
+    </div>
 </ul>

@@ -71,8 +71,9 @@ export default defineComponent({
                 }
 
             });
+        }else {
+            this.sortedFilteredData = [];
         }
-
     },
     sortListByCutDate(cardList){
         if (this.filteredRewards) {
