@@ -19,6 +19,10 @@ export default defineComponent({
             }
             this.showFilter = !this.showFilter;
         },
+        getDynamicUserAvatar(){
+            const defaultAvatar = new URL('/src/assets/user.png', import.meta.url).href;
+            return this.isLoggedIn ? this.userAvatar : defaultAvatar;
+        },
         signOut(){
             this.handleSignOut();
             this.showMenu = false;

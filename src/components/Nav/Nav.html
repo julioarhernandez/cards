@@ -15,7 +15,7 @@
         </ul>
         <div class="rightNav">
             <a class="rightNav__link" href="#" @click.prevent="showMenu = !showMenu">
-                <img class="rightNav__image" :src="isLoggedIn ? userAvatar : '/src/assets/user.png'" referrerpolicy="no-referrer" alt="User Avatar"/>
+                <img class="rightNav__image" :src="getDynamicUserAvatar()" referrerpolicy="no-referrer" alt="User Avatar"/>
             </a>
             <transition name="zoomIn">
                 <div class="rightNav__menu" v-if="showMenu && isLoggedIn" >
