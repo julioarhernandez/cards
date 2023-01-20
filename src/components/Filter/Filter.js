@@ -16,6 +16,9 @@ export default defineComponent({
     methods:{
         handleFilterInput(){
             this.$emit('filterBy', this.searchContent);
+        },
+        getFilterIcon(name){
+            return new URL(`/src/assets/categories/${name}.svg`, import.meta.url).href
         }
     },
     watch: {
