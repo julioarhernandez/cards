@@ -7,10 +7,10 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 
 const routes = [
-    {path: '/', name: 'Home', component: Home, meta: { auth: true }},
-    {path: '/signin', name: 'Signin', component: SignIn, meta: { auth: false }},
-    {path: '/newcard', name: 'New Card', component: NewCardView, meta: { auth: true }},
-    {path: '/editcard/:id', name: 'Edit Card', component: EditCard, meta: { auth: true }},
+    {path: '/', name: 'Home', component: Home, meta: { auth: true, title: "Credit Card Reminder" }},
+    {path: '/signin', name: 'Signin', component: SignIn, meta: { auth: false, title: "Credit Card | Sign In please" }},
+    {path: '/newcard', name: 'New Card', component: NewCardView, meta: { auth: true , title: "Credit Card | Add new credit card"}},
+    {path: '/editcard/:id', name: 'Edit Card', component: EditCard, meta: { auth: true , title: "Credit Card | Edit Credit card"}},
 ];
 
 const router = createRouter({

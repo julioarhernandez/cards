@@ -10,9 +10,9 @@ import CardList from '../CardList/CardList.vue';
 let auth;
 
 export default defineComponent({
-  name: 'App',
-  components: { Card, CardList, Nav },
-  data(){
+    name: 'App',
+    components: { Card, CardList, Nav },
+    data(){
     return {
         isLoggedIn: false,
         userEmail: null,
@@ -25,7 +25,7 @@ export default defineComponent({
         cards: []
     }
   },
-  computed: {
+    computed: {
     filterRewardsFunction(){
         this.sortFilterRewards();
         return this.filteredRewards
@@ -33,7 +33,7 @@ export default defineComponent({
             : this.cards;
     }
   },
-  methods: {
+    methods: {
     signInWithGoogle(){
         const provider = new GoogleAuthProvider();
         signInWithPopup(getAuth(), provider).then((result => {
@@ -131,7 +131,7 @@ export default defineComponent({
         createCard(card);
     }
   },
-  mounted(){
+    mounted(){
     this.checkPaid();
     auth = getAuth();
     onAuthStateChanged( auth, (user) => {
@@ -144,7 +144,11 @@ export default defineComponent({
             this.isLoggedIn = false;
         }
     });
-  }
-
+      },
+    watch: {
+        '$route' (to, from) {
+            document.title = to.meta.title || 'Credit Card'
+        }
+    },
 });
 
