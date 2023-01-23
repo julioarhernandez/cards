@@ -1,14 +1,19 @@
 .cardList {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    &-list{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
     &-not-found {
         font-size: 16px;
         width: 248px;
-        margin: 20px auto;
+        margin: auto;
+        padding: 20px;
         text-align: center;
         color: rgb(0 0 0 / 60%);
         &-image {
@@ -26,8 +31,25 @@
     .fadeInUp-enter-to {
         margin-top: 0;
     }
+    .fadeInUp-move,
     .fadeInUp-leave-active,
     .fadeInUp-enter-active {
         transition: margin-top 0.3s ease, opacity .3s ease;
+        width: 100%;
+    }
+    .fadeInUp-leave-active {
+        position: absolute;
+    }
+    .fadeInUpDelayed-leave-to,
+    .fadeInUpDelayed-enter-from {
+        opacity: 0;
+        margin-top: -15px;
+    }
+    .fadeInUpDelayed-leave-from,
+    .fadeInUpDelayed-enter-to {
+        margin-top: 0;
+    }
+    .fadeInUpDelayed-enter-active {
+        transition: margin-top 0.3s ease 0.3s, opacity .3s ease 0.3s;
     }
 }

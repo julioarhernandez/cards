@@ -1,20 +1,25 @@
-<ul class="cardList">
-    <transition-group name="fadeInUp">
-        <Card
-            v-for="card in sortBy(list)"
-            :card="card"
-            :key="card.id"
-            :daysLeft="dateDiff(card.cutDate)"
-            :available="isCardAvailable(card.cutDate)"
-            :minAmount="minIdealPercentage(card)"
-            :maxAmount="maxIdealPercentage(card)"
-            @cutPaidChanged="cutPaidChanged"
-            @filterBy="filterBy"
-        />
-    </transition-group>
-    <div class="cardList-not-found" v-if="!list.length">
-        <img class="cardList-not-found-image" src="/src/assets/broken.svg" alt="Empty list of cards" />
-        <h2>No cards to show</h2>
-        <p>If you are filtering rewards try with another keyword or category</p>
-    </div>
-</ul>
+<div class="cardList">
+    <ul class="cardList-list">
+        <TransitionGroup name="fadeInUp">
+            <Card
+                    v-for="card in sortBy(list)"
+                    :card="card"
+                    :key="card.id"
+                    :daysLeft="dateDiff(card.cutDate)"
+                    :available="isCardAvailable(card.cutDate)"
+                    :minAmount="minIdealPercentage(card)"
+                    :maxAmount="maxIdealPercentage(card)"
+                    @cutPaidChanged="cutPaidChanged"
+                    @filterBy="filterBy"
+            />
+        </TransitionGroup>
+    </ul>
+    <transition name="fadeInUpDelayed">
+        <div class="cardList-not-found" v-show="!list.length">
+            <img class="cardList-not-found-image" src="/src/assets/broken.svg" alt="Empty list of cards" />
+            <h2>No cards to show</h2>
+            <p>If you are filtering rewards try with another keyword or category</p>
+        </div>
+    </transition>
+</div>
+
