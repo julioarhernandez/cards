@@ -27,6 +27,9 @@
         opacity: 0;
         margin-top: -15px;
     }
+    .fadeInUp-leave-from{
+        opacity: 0;
+    }
     .fadeInUp-leave-from,
     .fadeInUp-enter-to {
         margin-top: 0;
@@ -34,7 +37,7 @@
     .fadeInUp-move,
     .fadeInUp-leave-active,
     .fadeInUp-enter-active {
-        transition: margin-top 0.3s ease, opacity .3s ease;
+        transition: margin-top 0.3s ease, opacity 0.3s ease;
         width: 100%;
     }
     .fadeInUp-leave-active {
@@ -50,6 +53,6 @@
         margin-top: 0;
     }
     .fadeInUpDelayed-enter-active {
-        transition: margin-top 0.3s ease 0.3s, opacity .3s ease 0.3s;
+        transition: margin-top 0.3s ease, opacity .3s ease;
     }
 }
