@@ -7,7 +7,7 @@
         min-height: 160px;
         background-color: var(--mainColor);
         box-shadow: 0 9px 20px 0 rgb(0 0 0 / 40%);
-        &:after {
+        &:before {
             content: "";
             position: absolute;
             top: 0;
@@ -17,21 +17,24 @@
             border-radius: 10px;
             background-image: linear-gradient(147deg, rgb(255 255 255 / 0%) 0%, rgb(27 27 27 / 58%));
             pointer-events: none;
-            z-index: 3  ;
+            z-index: 1;
         }
         #{$a}.unavailable &{
             border: none;
-            &:before {
-                content: "";
+            &:after {
+                content: url('/src/assets/lock05.svg');
+                border: 1px solid rgb(0, 0, 0, 0.4);
+                display: grid;
+                place-items: center;
                 position: absolute;
                 top: 0;
                 bottom: 0;
                 right: 0;
                 left: 0;
-                background-color: rgba(#fff, 0.7);
+                background-color: rgba(#fff, 0.5);
                 pointer-events: none;
                 border-radius: 10px;
-                z-index: 1;
+                z-index: 3;
             }
         }
     }
@@ -44,6 +47,7 @@
             "card__reward card__type";
         gap: 20px;
         z-index: 2;
+        position: relative;
     }
     &__ship {
         margin-bottom: 8px;
@@ -88,7 +92,7 @@
         grid-area: card__type;
         justify-self: flex-end;
         &-image {
-            width: 50px;
+            width: 40px;
         }
     }
     &__time {
@@ -112,8 +116,8 @@
         &-paid {
             font-size: 20px;
             color: white;
-            background: green;
-            padding: 4px 4px;
+            background: black;
+            padding: 6px;
             border-radius: 4px;
         }
     }
@@ -205,6 +209,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 4;
             img {
                 width: 12px;
             }
