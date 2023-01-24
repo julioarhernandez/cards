@@ -60,11 +60,13 @@
         }
     }
     ul{
-        display: inline-flex;
+        display: flex;
+        justify-content: space-between;
         margin-right: 15px;
         gap: 24px;
         li {
             padding: 5px;
+            flex: 1;
         }
     }
     .slideLeft-leave-to,
