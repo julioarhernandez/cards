@@ -24,6 +24,9 @@ export default defineComponent({
             try {
                 // add rewards object to form
                 this.form.rewards = this.rewards;
+                if (!this.form.color){
+                    this.form.color = "#ccc";
+                }
                 const formVal = {...this.form, "user": this.userEmail}
                 await this.addNewCard(formVal);
                 this.form = {};
