@@ -45,8 +45,12 @@ export default defineComponent({
                     icon: true,
                     rtl: false
                 });
+                // redirect to home
+                setTimeout(()=> {
+                    this.$router.push('/');
+                }, 1000);
             }catch (error) {
-                toast.success(error, {
+                toast.error(error, {
                     position: "top-center",
                     timeout: 5000,
                     closeOnClick: true,
