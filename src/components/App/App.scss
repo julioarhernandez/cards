@@ -94,7 +94,14 @@ h2 {
         text-transform: uppercase;
         font-weight: 700;
         background: #00a1ff;
+        border: 1px solid transparent;
         color: white;
+        transition: all 0.3s;
+        cursor: pointer;
+        &:hover {
+            border-color: darken(#00a1ff,20%);
+            background-color: darken(#00a1ff,10%);
+        }
     }
 }
 .form-wrapper {
