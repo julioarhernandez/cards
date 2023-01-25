@@ -38,6 +38,11 @@ const filters = [
         'name': 'home',
         'icon': 'home',
         'slug': 'home'
+    },
+    {
+        'name': 'everything',
+        'icon': 'everything',
+        'slug': 'everything'
     }
 ];
 export default filters;

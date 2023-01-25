@@ -53,11 +53,15 @@ export default defineComponent({
             // Filter first
             let tempSortedFilteredData = this.cards.filter((card) => {
                 return (card.rewards && card.rewards.find(e => {
+                    // filter by reward name
                     const nameFound = e.name.toLowerCase() == this.filterRewardCategory.toLowerCase();
+                    // filter by reward details
                     const detailsFound = e.details
                         ? e.details.toLowerCase().includes(this.filterRewardCategory.toLowerCase())
                         : false;
-                    return (nameFound || detailsFound);
+                    // filter by everything.
+                    const everythingFound = e.name.toLowerCase() == "everything";
+                    return (nameFound || detailsFound || everythingFound);
                 }));
             });
             // Sort array
