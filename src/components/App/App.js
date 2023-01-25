@@ -53,7 +53,23 @@ export default defineComponent({
             // Filter first
             let tempSortedFilteredData = this.cards.filter((card) => {
                 return (card.rewards && card.rewards.find(e => {
-                    // filter by reward name
+                    // filter by reward name only if is between dates of reward
+                    // If reward has dates means it should be only shown within these dates
+                    let isAfterDate = true;
+                    let isBeforeDate = true;
+                    const rewardStartDate = e.startDate;
+                    const rewardEndDate = e.endDate;
+                    const today = format(new Date(), 'yyyy-MM-dd');
+                    if (rewardStartDate){
+                        isAfterDate = isAfter(parseISO(today), parseISO(rewardStartDate));
+                    }
+                    if (rewardEndDate){
+                        isBeforeDate = isBefore(parseISO(today), parseISO(rewardEndDate));
+                    }
+                    // Do not search for coincidences if not within dates
+                    if (!(isAfterDate && isBeforeDate)){
+                        return ;
+                    }
                     const nameFound = e.name.toLowerCase() == this.filterRewardCategory.toLowerCase();
                     // filter by reward details
                     const detailsFound = e.details
