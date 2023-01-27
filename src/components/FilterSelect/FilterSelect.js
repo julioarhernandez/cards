@@ -79,7 +79,6 @@ export default defineComponent({
         modelValue(newMV, oldMV){
             if (newMV !== oldMV) {
                 this.search = newMV;
-                console.log('modelValue', newMV);
             }
         }
     }

@@ -32,39 +32,13 @@ export default defineComponent({
                 await this.addNewCard(formVal);
                 this.form = {};
                 this.rewards = [];
-                toast.success("Card Added", {
-                    position: "top-center",
-                    timeout: 5000,
-                    closeOnClick: true,
-                    pauseOnFocusLoss: true,
-                    pauseOnHover: true,
-                    draggable: false,
-                    draggablePercent: 0.6,
-                    showCloseButtonOnHover: false,
-                    hideProgressBar: false,
-                    closeButton: "button",
-                    icon: true,
-                    rtl: false
-                });
+                toast.success("Card Added");
                 // redirect to home
                 setTimeout(()=> {
                     this.$router.push('/');
                 }, 1000);
             }catch (error) {
-                toast.error(error, {
-                    position: "top-center",
-                    timeout: 5000,
-                    closeOnClick: true,
-                    pauseOnFocusLoss: true,
-                    pauseOnHover: true,
-                    draggable: false,
-                    draggablePercent: 0.6,
-                    showCloseButtonOnHover: false,
-                    hideProgressBar: false,
-                    closeButton: "button",
-                    icon: true,
-                    rtl: false
-                });
+                toast.error(error);
             }
         },
         updateReward(index) {
