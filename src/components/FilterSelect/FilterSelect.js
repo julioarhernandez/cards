@@ -49,7 +49,8 @@ export default defineComponent({
 
             }
         },
-        onChange() {
+        onChange(e) {
+            this.search = e.target.value;
             this.filterResults();
             this.isOpen = true;
         },

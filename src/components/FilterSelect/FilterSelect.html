@@ -1,7 +1,7 @@
 <div class="filterSelect">
     <label class="filterSelect-label" for="filterSelect-name">{{ label }}</label>
     <input
-        v-model="search"
+        :value="search"
         @input="onChange"
         class="filterSelect-input"
         type="text"
