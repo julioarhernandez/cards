@@ -1,0 +1,44 @@
+.filterSelect{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    &-label {
+        text-transform: capitalize;
+    }
+    &-list {
+        list-style: none;
+        position: absolute;
+        top: 60px;
+        margin: 0;
+        padding: 0;
+        background-color: #e9e7e7;
+        width: calc(100% + 40px);
+        left: -20px;
+        border-radius: 0 0 10px 10px;
+        overflow: hidden;
+        font-family: 'Quattrocento Sans', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        max-height: 175px;
+        overflow-y: auto;
+        &-new {
+            display: flex;
+            flex-direction: column;
+            &-label {
+                font-size: 12px;
+                margin-bottom: 5px;
+                color: #8b8b8b;
+            }
+            &-search {
+        
+            }
+        }
+        li {
+            padding: 15px 15px 15px 20px;
+            &.is-active {
+                background-color: #d8d7d7;
+            }
+        }
+    }
+}

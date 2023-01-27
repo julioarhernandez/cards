@@ -1,14 +1,15 @@
 import { defineComponent } from "vue";
-import { VSwatches } from 'vue3-swatches'
-import 'vue3-swatches/dist/style.css'
-import {useToast} from "vue-toastification";
+import filterSelect from "@/components/FilterSelect/FilterSelect.vue";
+import { VSwatches } from 'vue3-swatches';
+import { useToast } from "vue-toastification";
+import 'vue3-swatches/dist/style.css';
 
 const toast = useToast();
 
 export default defineComponent({
     name: 'NewCard',
     props: ['addNewCard', 'userEmail'],
-    components: { VSwatches },
+    components: { VSwatches, filterSelect },
     emits: [],
     data(){
         return {

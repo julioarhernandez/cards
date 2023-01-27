@@ -49,9 +49,12 @@
                 <div class="form-header">
                     <h2>Add Rewards</h2>
                 </div>
-                <div class="form-group form-half">
-                    <label for="reward-name">Name</label>
-                    <input type="text" v-model="rewardForm.name" name="reward-name" id="reward-name"/>
+                <div class="form-group">
+                    <filter-select
+                        label="name"
+                        v-model="rewardForm.name"
+                        :items="['gas','restaurants', 'travel', 'groceries', 'clothes','electronics', 'pharmacy', 'home', 'everything']"
+                    />
                 </div>
                 <div class="form-group form-half">
                     <label for="reward-interest">Interest</label>

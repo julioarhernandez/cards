@@ -1,0 +1,29 @@
+<div class="filterSelect">
+    <label class="filterSelect-label" for="filterSelect-name">{{ label }}</label>
+    <input
+        v-model="search"
+        @input="onChange"
+        class="filterSelect-input"
+        type="text"
+        name="filterSelect-name"
+        id="filterSelect-name"
+        autocomplete="off"
+        v-on:focus.native="onFocus"
+        @keydown.down="onArrowDown"
+        @keydown.up="onArrowUp"
+        @keydown.enter="onEnter"
+    />
+    <ul class="filterSelect-list" v-show="isOpen" :class="{'filterSelect-list-filtered': isFiltering}">
+        <li v-for="(result, i) in results"
+            :key="i"
+            @click="setResult(result)"
+            :class="{ 'is-active': (i === arrowCounter || results.length == 1) }"
+        >
+            {{result}}
+        </li>
+        <li v-show="results.length === 0" class="filterSelect-list-new">
+            <div class="filterSelect-list-new-label">this will adds new filter</div>
+            <div class="filterSelect-list-new-search">{{ search }}</div>
+        </li>
+    </ul>
+</div>

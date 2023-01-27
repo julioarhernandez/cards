@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import { getCard, updateCard } from "@/helpers/firebase";
+import filterSelect from "@/components/FilterSelect/FilterSelect.vue";
 import { VSwatches } from 'vue3-swatches';
 import { useToast } from "vue-toastification";
 import 'vue3-swatches/dist/style.css';
@@ -8,8 +9,8 @@ const toast = useToast();
 
 export default defineComponent({
     name: 'UpdateCard',
-    props:['id'],
-    components: { VSwatches },
+    props: ['id'],
+    components: { VSwatches, filterSelect },
     data(){
         return {
             form: {},
