@@ -96,6 +96,10 @@
                     height: 20px;
                 }
             }
+            &-search,
+            &-reset {
+                display: flex;
+            }
         }
     }
     &-buttons {

@@ -5,10 +5,10 @@
                 <input class="filter-search-input" type="text" v-model="searchContent" @keyup.enter="handleFilterInput" placeholder="Filter Rewards"/>
                 <div class="filter-search-form-status">
                     <div class="filter-search-form-search" v-show="!filterRewardCategory">
-                        <img src="/src/assets/search.svg">
+                        <img src="/src/assets/filter-search.svg">
                     </div>
                     <div class="filter-search-form-reset" v-show="filterRewardCategory">
-                        <img src="/src/assets/clear.svg" @click.prevent="resetFilterBy">
+                        <img src="/src/assets/filter-reset.svg" @click.prevent="resetFilterBy">
                     </div>
                 </div>
             </div>
