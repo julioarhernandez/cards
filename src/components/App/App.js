@@ -17,6 +17,7 @@ export default defineComponent({
             isLoggedIn: false,
             userEmail: null,
             userAvatar: "",
+            userDisplayName: "",
             filteredRewards: false,
             filterRewardCategory: '',
             sortedFilteredData: [],
@@ -159,6 +160,7 @@ export default defineComponent({
             if (user){
                 this.isLoggedIn = true;
                 this.userEmail = user.email;
+                this.userDisplayName = user.displayName;
                 this.userAvatar = user.photoURL;
                 this.cards = useLoadedCards(this.userEmail);
             }else {

@@ -69,6 +69,12 @@ nav {
             display: flex;
             flex: 1 1 auto;
             gap: 15px;
+            &-text {
+                z-index: 0;
+            }
+            &-avatar {
+                z-index: 1;
+            }
         }
         &-username {
             font-size: 16px;
@@ -132,17 +138,17 @@ nav {
         &__menu {
             position: absolute;
             width: 80px;
-            right: 30px;
-            top: 0px;
+            left: 50px;
+            top: 5px;
             z-index: -1;
             &:before {
                 content: "";
                 position: absolute;
-                width: 92px;
-                right: -43px;
+                width: 136px;
+                left: -63px;
                 top: -16px;
-                padding: 10px 40px 10px 15px;
-                background: rgb(255 255 255);
+                padding: 10px;
+                background: rgb(255, 255, 255);
                 border-radius: 10px;
                 height: 43px;
                 z-index: -1;
