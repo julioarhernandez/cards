@@ -1,32 +1,42 @@
 <nav>
-    <div class="nav-links">
-        <ul class="leftNav">
-            <li>
-                <a href="#" class="nav-links-filter" :class="{'active': showFilter}" @click.prevent="toggleFilterIcon">
-                    <img class="nav-links-filter-icon" src="/src/assets/filter.svg" alt="Filter">
-                </a>
-            </li>
-            <li>
-                <router-link to="/">Cards</router-link>
-            </li>
-            <li>
-                <router-link to="/newcard">New Card</router-link>
-            </li>
-        </ul>
-        <div class="rightNav">
-            <a class="rightNav__link" href="#" @click.prevent="showMenu = !showMenu">
-                <img class="rightNav__image" :src="getDynamicUserAvatar()" referrerpolicy="no-referrer" alt="User Avatar"/>
-            </a>
-            <transition name="zoomIn">
-                <div class="rightNav__menu" v-if="showMenu && isLoggedIn" >
-                    <a href="#" @click.prevent="signOut">Sign Out</a>
+    <div class="nav-header">
+        <div class="nav-header-left">
+            <div class="nav-header-left-avatar">
+                <div class="rightNav">
+                    <a class="rightNav__link" href="#" @click.prevent="showMenu = !showMenu">
+                        <img class="rightNav__image" :src="getDynamicUserAvatar()" referrerpolicy="no-referrer" alt="User Avatar"/>
+                    </a>
+                    <transition name="zoomIn">
+                        <div class="rightNav__menu" v-if="showMenu && isLoggedIn" >
+                            <a href="#" @click.prevent="signOut">Sign Out</a>
+                        </div>
+                    </transition>
                 </div>
-            </transition>
+            </div>
+            <div class="nav-header-left-text">
+                <div class="nav-header-title">
+                    Welcome back
+                </div>
+                <div class="nav-header-username">
+                    Fulano
+                </div>
+            </div>
+
+        </div>
+        <div class="nav-header-right">
+            <a class="nav-header-options" href="#" @click.prevent="showFilter = !showFilter">
+                <img class="nav-header-options-icon" src="/src/assets/options.svg" alt="Show filters"/>
+            </a>
         </div>
     </div>
     <transition name="slideDown">
-        <div class="nav-filters" v-show="showFilter">
-            <Filter @filterBy="filterBy" :filterRewardCategory="filterRewardCategory" :showFilter="showFilter"/>
+        <div class="nav-content" v-show="showFilter">
+            <Filter
+                @filterBy="filterBy"
+                :filterRewardCategory="filterRewardCategory"
+                :showFilter="showFilter"
+                :resetFilterBy="resetFilterBy"
+            />
         </div>
     </transition>
 </nav>

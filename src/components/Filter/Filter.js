@@ -3,7 +3,7 @@ import filters from "@/helpers/filters.js";
 
 export default defineComponent({
     name: 'Filter',
-    props: ['filterRewardCategory','showFilter'],
+    props: ['filterRewardCategory','showFilter','resetFilterBy'],
     emits: [ 'filterBy'],
     data(){
         return {
@@ -11,6 +11,7 @@ export default defineComponent({
             showSearch: false,
             searchContent: "",
             filters,
+            showFilter: false,
         }
     },
     methods:{
@@ -19,7 +20,13 @@ export default defineComponent({
         },
         getFilterIcon(name){
             return new URL(`/src/assets/categories/${name}.svg`, import.meta.url).href
-        }
+        },
+        toggleFilterIcon(){
+            if (this.showFilter){
+                this.resetFilterBy();
+            }
+            this.showFilter = !this.showFilter;
+        },
     },
     watch: {
         // showFilter is being watched

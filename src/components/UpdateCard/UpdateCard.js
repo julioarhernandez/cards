@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import { getCard, updateCard } from "@/helpers/firebase";
+import PageHeader from "@/components/PageHeader/PageHeader.vue";
 import filterSelect from "@/components/FilterSelect/FilterSelect.vue";
 import { VSwatches } from 'vue3-swatches';
 import { useToast } from "vue-toastification";
@@ -10,7 +11,7 @@ const toast = useToast();
 export default defineComponent({
     name: 'UpdateCard',
     props: ['id'],
-    components: { VSwatches, filterSelect },
+    components: { VSwatches, filterSelect, PageHeader },
     data(){
         return {
             form: {},

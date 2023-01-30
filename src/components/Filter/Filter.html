@@ -1,23 +1,28 @@
 <div class="filter">
-    <div class="filter-container">
-        <ul>
-            <li v-for="filter in filters">
-                <a href="#" @click.prevent="$emit('filterBy', filter.name)" :class="{'active': filter.name.toLowerCase() == filterRewardCategory.toLowerCase()}">
-                    <img class="filter-icon" :src="getFilterIcon(filter.slug)" />
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="filter-search">
-        <transition name="slideLeft">
-            <div class="filter-search-form" v-show="showSearch">
-                <input class="filter-search-input" type="text" v-model="searchContent" @keyup.enter="handleFilterInput"/>
+    <div class="filter-form">
+        <div class="filter-search">
+            <div class="filter-search-form">
+                <input class="filter-search-input" type="text" v-model="searchContent" @keyup.enter="handleFilterInput" placeholder="Filter Rewards"/>
             </div>
-        </transition>
-        <div class="filter-search-link">
-            <a href="#" @click.prevent="showSearch = !showSearch">
-                <img class="filter-search-link-icon" src="/src/assets/search.svg" alt="Custom filter"/>
-            </a>
+        </div>
+        <div class="filter-buttons">
+            <router-link to="/newcard">+</router-link>
         </div>
     </div>
+    <transition name="slideDown">
+        <div class="filter-categories">
+           <ul>
+               <li v-for="filter in filters">
+                   <a href="#" class="filter-categories-link" @click.prevent="$emit('filterBy', filter.name)" :class="{'active': filter.name.toLowerCase() == filterRewardCategory.toLowerCase()}">
+                       <span class="filter-categories-link-icon">
+                           <img class="filter-categories-link-icon-image" :src="getFilterIcon(filter.slug)" />
+                       </span>
+                       <span class="filter-categories-link-text">
+                           {{filter.name}}
+                       </span>
+                   </a>
+               </li>
+           </ul>
+        </div>
+    </transition>
 </div>

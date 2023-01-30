@@ -1,15 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&family=Share+Tech+Mono&display=swap');
 $Oswald: 'Oswald', sans-serif;
 $ShareTec: 'Share Tech Mono', monospace;
-$Quattrocentro: 'Quattrocento Sans', sans-serif;
+$Roboto: 'Roboto', sans-serif;
 body {
-    font-family: $Quattrocentro;
+    font-family: $Roboto;
     font-size: 20px;
     $bodyPadding: 15px;
     margin: 0 auto;
     padding: $bodyPadding;
-    background-color: #0093E9;
-    background-image: linear-gradient(180deg, #00a1ff 0%, #ffffff 50vh);
     min-height: 100vh;
     max-width: 800px;
 }
@@ -74,7 +72,7 @@ h2 {
     input[type=date],
     textarea,
     select {
-        font-family: $Quattrocentro;
+        font-family: $Roboto;
         border: none;
         background: none;
         height: 30px;
@@ -116,7 +114,7 @@ h2 {
     border-radius: 10px;
 }
 .page {
-    padding: 25px 15px;
+    padding: 0 15px 25px 15px;
     background: white;
     border-radius: 10px;
     &-header,

@@ -6,8 +6,6 @@
         padding: 25px;
         min-height: 160px;
         background-color: var(--mainColor);
-        box-shadow: 0 9px 20px 0 #3c3b3b;
-        border: 1px solid rgb(0, 0, 0, 0.4);
         &:before {
             content: "";
             position: absolute;
@@ -24,7 +22,6 @@
             border: none;
             &:after {
                 content: url('/src/assets/lock05.svg');
-                border: 1px solid rgb(0, 0, 0, 0.4);
                 display: grid;
                 place-items: center;
                 position: absolute;
