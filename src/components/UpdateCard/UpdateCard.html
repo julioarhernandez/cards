@@ -24,19 +24,19 @@
                     <label for="number">Number</label>
                     <input type="number" v-model="form.number" name="number" id="number" required max="9999" pattern="[0-9]{4}" placeholder="last 4 digits"/>
                 </div>
-                <div class="form-group form-half">
+                <div class="form-group">
                     <label for="color">Card Color</label>
                     <v-swatches v-model="form.color" id="color"></v-swatches>
                 </div>
-                <div class="form-group form-half">
+                <div class="form-group">
                     <label for="cutDate">Cut Day</label>
                     <input type="number" min="1" max="31" v-model="form.cutDate" name="cutDate" id="cutDate" required placeholder="Day only (1-31)"/>
                 </div>
-                <div class="form-group form-half">
+                <div class="form-group">
                     <label for="dueDate">Due Day</label>
                     <input type="number" min="1" max="31" v-model="form.dueDate" name="dueDate" id="dueDate"/>
                 </div>
-                <div class="form-group form-half">
+                <div class="form-group">
                     <label for="cutDateBefore">Cut Day Before</label>
                     <input type="number" min="1" max="7" v-model="form.cutDateBefore" name="cutDateBefore" id="cutDateBefore"/>
                 </div>
@@ -49,6 +49,12 @@
                 <div class="form-header">
                     <h2>Add Rewards</h2>
                 </div>
+                <div class="reward-card-wrapper">
+                    <div class="reward-card" v-for="(reward, index) in rewards" :key="index">
+                        <div class="reward-card-close" @click="removeReward(reward.name)">x</div>
+                        <div class="reward-card-label" @click="updateReward(index)">{{ reward.name }}</div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <filter-select
                         label="name"
@@ -56,15 +62,15 @@
                         :items="['gas','restaurants', 'travel', 'groceries', 'clothes','electronics', 'pharmacy', 'home', 'everything']"
                     />
                 </div>
-                <div class="form-group form-half">
+                <div class="form-group">
                     <label for="new-reward-interest">Interest</label>
                     <input type="number" v-model="rewardForm.interest" name="new-reward-interest" step="0.5" id="new-reward-interest"/>
                 </div>
-                <div class="form-group form-half">
+                <div class="form-group">
                     <label for="new-reward-startdate">Start Date</label>
                     <input type="date" v-model="rewardForm.startDate" name="new-reward-startdate" id="new-reward-startdate"/>
                 </div>
-                <div class="form-group form-half">
+                <div class="form-group">
                     <label for="new-reward-enddate">End Date</label>
                     <input type="date" v-model="rewardForm.endDate" name="new-reward-enddate" id="new-reward-enddate"/>
                 </div>
@@ -72,21 +78,12 @@
                     <label for="new-reward-details">Details</label>
                     <textarea v-model="rewardForm.details" name="new-reward-details" id="new-reward-details"></textarea>
                 </div>
-                <div class="form-group form-button form-button-left">
+                <div class="form-group form-button form-button-left form-close">
                     <input type="hidden" v-model="rewardForm.id" name="reward-id" id="reward-id"/>
                     <button @click.prevent="addReward">Save rewards</button>
                 </div>
-                <div class="form-subheader">
-                    <h2>Rewards added</h2>
-                </div>
-                <div class="reward-card-wrapper">
-                    <div class="reward-card" v-for="(reward, index) in rewards" :key="index">
-                        <div class="reward-card-close" @click="removeReward(reward.name)">x</div>
-                        <div class="reward-card-label" @click="updateReward(index)">{{ reward.name }}</div>
-                    </div>
-                </div>
             </div>
-            <div class="form-group form-button">
+            <div class="form-group form-button form-button-left">
                 <button type="submit">Update Card</button>
             </div>
         </form>
