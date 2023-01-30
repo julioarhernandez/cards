@@ -71,17 +71,31 @@
     }
     &-search{
         flex: 1;
+        position: relative;
         &-input {
             border: none;
             background-color: #f0f0f0;
             border-radius: 25px;
             height: 50px;
-            padding: 0 20px;
-            width: calc(100% - 40px);
+            padding: 0 50px 0 20px;
+            width: calc(100% - 70px);
             font-size: 18px;
             text-transform: capitalize;
             color: #797979;
-            font-family: 'Roboto', sans-serif;
+            font-family: "Roboto", sans-serif;
+        }
+        &-form {
+            &-status {
+                position: absolute;
+                top: 0;
+                right: 15px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                img {
+                    height: 20px;
+                }
+            }
         }
     }
     &-buttons {

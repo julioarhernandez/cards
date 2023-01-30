@@ -10,8 +10,7 @@ export default defineComponent({
             show: false,
             showSearch: false,
             searchContent: "",
-            filters,
-            showFilter: false,
+            filters
         }
     },
     methods:{
@@ -29,11 +28,16 @@ export default defineComponent({
         },
     },
     watch: {
+        filterRewardCategory(newState, oldState) {
+            if (newState !== oldState) {
+                this.searchContent = newState;
+            }
+        },
         // showFilter is being watched
         // reset filter and hide search form
         showFilter(newState, oldState) {
             if (newState !== oldState && !newState) {
-                this.searchContent = "";
+                // this.searchContent = "";
                 this.showSearch = false;
             }
         }

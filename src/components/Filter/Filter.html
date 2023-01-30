@@ -3,6 +3,14 @@
         <div class="filter-search">
             <div class="filter-search-form">
                 <input class="filter-search-input" type="text" v-model="searchContent" @keyup.enter="handleFilterInput" placeholder="Filter Rewards"/>
+                <div class="filter-search-form-status">
+                    <div class="filter-search-form-search" v-show="!filterRewardCategory">
+                        <img src="/src/assets/search.svg">
+                    </div>
+                    <div class="filter-search-form-reset" v-show="filterRewardCategory">
+                        <img src="/src/assets/clear.svg" @click.prevent="resetFilterBy">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="filter-buttons">

@@ -24,7 +24,7 @@
 
         </div>
         <div class="nav-header-right">
-            <a class="nav-header-options" href="#" @click.prevent="showFilter = !showFilter">
+            <a class="nav-header-options" :class="{ 'nav-header-filtered': filterRewardCategory}" href="#" @click.prevent="showFilter = !showFilter">
                 <img class="nav-header-options-icon" src="/src/assets/options.svg" alt="Show filters"/>
             </a>
         </div>
